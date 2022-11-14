@@ -1,0 +1,11 @@
+export 'auth.controller.dart';
+export 'utils.dart';
+export 'v2.imports.dart';
+// export './cel_auth/cel_auth.imports.dart';
+export './clients/clients.imports.dart';
+export './common/common.imports.dart';
+export './email_auth/email_auth.imports.dart';
+// export './facebook_auth/facebook_auth.imports.dart';
+// export './local_auth/local_auth.imports.dart';
+export './models/v2_models.imports.dart';
+// export './provedores/provedores.imports.dart';

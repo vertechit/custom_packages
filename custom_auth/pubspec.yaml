@@ -1,0 +1,45 @@
+name: custom_auth
+description: A new Flutter package project.
+version: 0.0.1
+author:
+homepage:
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  # flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get: ^3.22.2
+  shared_preferences: ^2.0.4
+  flutter_signin_button: ^1.1.0
+  # firebase_core: 0.7.0
+
+  #==============================
+  #      PACKAGES FIREBASE
+  
+  # firebase_auth: ^0.14.0
+  # firebase_core: ^0.7.0
+  # firebase_analytics: ^1.0.4 
+  # firebase_database: ^3.1.1
+
+  #==============================
+  #    PACKAGES PROPRIETARIOS
+
+  custom_app:
+    path:
+      ../custom_app  
+  # custom_app:
+  #   git:
+  #     url: https://Marcoslima016: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@github.com/Marcoslima016/custom_app
+  #     ref: dev/marcos_lima     
+ 
+  #==============================    
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:

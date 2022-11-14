@@ -1,0 +1,4 @@
+enum AuthStatus {
+  logged,
+  unLogged,
+}

@@ -1,0 +1,4 @@
+enum ValidateResult {
+  Approved,
+  Refused,
+}

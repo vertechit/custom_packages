@@ -1,0 +1,9 @@
+export 'src.imports.dart'; 
+export './auth/auth.imports.dart'; 
+export './core/core.imports.dart'; 
+export './data/data.imports.dart'; 
+export './domain/domain.imports.dart'; 
+export './modulos/modulos.imports.dart'; 
+export './presentation/presentation.imports.dart'; 
+export './register/register.imports.dart'; 
+export './settings/settings.imports.dart'; 
