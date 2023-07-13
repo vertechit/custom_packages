@@ -8,7 +8,6 @@ homepage:
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.17.0"
 
 dependencies:
   flutter:
@@ -52,7 +51,7 @@ dependencies:
      
   #================================  
 
-  font_awesome_flutter: ^8.2.0
+  font_awesome_flutter: ^9.0.0
 
 dev_dependencies:
   flutter_test:

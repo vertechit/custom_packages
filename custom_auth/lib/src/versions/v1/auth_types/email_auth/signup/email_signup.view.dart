@@ -1,4 +1,4 @@
-import 'package:custom_app/custom_app/custom_app.imports.dart';
+import 'package:custom_app/lib.imports.dart';
 
 abstract class EmailSignupViewRequireds {
   //
