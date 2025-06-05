@@ -1,3 +1,0 @@
-class __templateName__ {
-  //
-}
