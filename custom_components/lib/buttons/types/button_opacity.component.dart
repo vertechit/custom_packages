@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../buttons.imports.dart';
 
-class ButtonOpacity extends ICustomButtom {
+class ButtonOpacity{
   //
   @override
   ButtonsPreferences preferences;
 
   ButtonOpacity({
-    @required this.preferences,
+    required this.preferences,
   }) {
     if (preferences.borderRadius == null) preferences.borderRadius = 30;
     if (preferences.width == null) preferences.width = 200;
@@ -23,22 +23,24 @@ class ButtonOpacity extends ICustomButtom {
     return Container(
       width: preferences.width,
       height: preferences.height,
-      child: RaisedButton(
-        elevation: 0,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          backgroundColor: preferences.bgColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(preferences.borderRadius!),
+          ),
+        ),
         child: Text(
-          preferences.text,
+          preferences!.text!,
           style: TextStyle(
-            color: preferences.textPreferences.textColor,
-            fontSize: preferences.textPreferences.size,
+            color: preferences!.textPreferences!.textColor,
+            fontSize: preferences!.textPreferences!.size,
           ),
         ),
         onPressed: () {
           preferences.onClick;
         },
-        color: preferences.bgColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(preferences.borderRadius),
-        ),
       ),
     );
   }

@@ -1,20 +1,18 @@
 import 'package:custom_app/lib.imports.dart';
-import 'package:flutter/material.dart';
-
 import '../custom_app.imports.dart';
 
 class CustomPopupConfig {
   //
 
-  CustomAppController appController;
+  late CustomAppController appController;
 
-  IAppComponents components;
+  late IAppComponents components;
 
-  IStyleTheme style;
+  late IStyleTheme style;
 
   bool configured = false; //// Indica se o package ja foi configurado
 
-  PopupDecoration decoration;
+  late PopupDecoration decoration;
 
   ///[=================== CONSTRUTOR ===================]
 
@@ -26,10 +24,10 @@ class CustomPopupConfig {
   ///[=============================================================================================================]
 
   Future initialize({
-    @required CustomAppController appController,
-    PopupDecoration decoration,
-    // @required IAppComponents components,
-    // @required IStyleTheme style,
+    required CustomAppController appController,
+    PopupDecoration? decoration,
+    // required IAppComponents components,
+    // required IStyleTheme style,
   }) async {
     configured = true;
     if (appController != null) this.appController = appController;

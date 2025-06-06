@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../custom_app.imports.dart';
 
 class WebModuloView {
-  PageType type;
-  Widget widget;
+  PageType? type;
+  Widget? widget;
   var viewConfig;
   WebModuloView({
     this.type,
@@ -25,8 +25,8 @@ class WebModuleView {
   ///
   final Widget widget;
 
-  double width;
-  double height;
+  double? width;
+  double? height;
 
   final PageType type;
 
@@ -35,7 +35,7 @@ class WebModuleView {
   ///---------- BASIC ----------
 
   WebModuleView.basic({
-    @required this.widget,
+    required this.widget,
   })  : width = 0,
         height = 0,
         type = PageType.basic;
@@ -43,11 +43,11 @@ class WebModuleView {
   ///----------- MODAL -----------
 
   WebModuleView.modal({
-    @required this.widget,
+    required this.widget,
     this.width,
     this.height,
   }) : type = PageType.modal {
-    if (width == null) width = WebAppConfig.instance.appController.deviceInfo.screenInfo.width * 90;
-    if (height == null) height = WebAppConfig.instance.appController.deviceInfo.screenInfo.height * 90;
+    if (width == null) width = WebAppConfig.instance.appController.deviceInfo.screenInfo.width! * 90;
+    if (height == null) height = WebAppConfig.instance.appController.deviceInfo.screenInfo.height! * 90;
   }
 }

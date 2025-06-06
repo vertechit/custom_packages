@@ -1,14 +1,13 @@
 import 'package:custom_app/lib.imports.dart';
-import 'package:flutter/material.dart';
 
 import '../custom_app.imports.dart';
 
 class CustomLoadConfig {
-  CustomAppController appController;
+  late CustomAppController appController;
 
-  IAppComponents components;
+  late IAppComponents components;
 
-  IStyleTheme style;
+  late IStyleTheme style;
 
   bool configured = false; //// Indica se o package ja foi configurado
 
@@ -22,7 +21,7 @@ class CustomLoadConfig {
   ///[=============================================================================================================]
 
   Future initialize({
-    @required CustomAppController appController,
+    required CustomAppController appController,
   }) async {
     configured = true;
     if (appController != null) this.appController = appController;

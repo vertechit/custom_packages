@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 class UserModel {
-  String nome;
-  String id;
-  String tokenJwt;
-  String user;
-  String pass;
+  String? nome;
+  String? id;
+  String? tokenJwt;
+  String? user;
+  String? pass;
 
   UserModel({this.nome, this.id, this.tokenJwt, this.user, this.pass});
 

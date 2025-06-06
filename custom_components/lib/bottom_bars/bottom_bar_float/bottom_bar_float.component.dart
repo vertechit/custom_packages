@@ -9,26 +9,26 @@ class BottomBarFloat extends StatelessWidget {
   ///[=================== VARIAVEIS ===================]
   ///
 
-  BottomBarFloatController bottomBarController;
+  late BottomBarFloatController bottomBarController;
 
-  Future futureFunction;
+  late Future futureFunction;
 
-  BottomBarFloatItem btnCenter;
-  BottomBarFloatItem btnLeft;
-  BottomBarFloatItem btnRight;
+  BottomBarFloatItem? btnCenter;
+  BottomBarFloatItem? btnLeft;
+  BottomBarFloatItem? btnRight;
 
-  Color itemColor;
-  Color selectedItemColor;
-  Color backgroundColor;
-  Color floatButtonBg;
-  Color floatButtonBgSelected;
-  Color floatButtonIconColor;
-  Color floatButtonIconColorSelected;
+  Color? itemColor;
+  Color? selectedItemColor;
+  Color? backgroundColor;
+  Color? floatButtonBg;
+  Color? floatButtonBgSelected;
+  Color? floatButtonIconColor;
+  Color? floatButtonIconColorSelected;
 
   ///[=================== CONSTRUTOR ===================]
 
   BottomBarFloat({
-    @required this.selectedItemColor,
+    required this.selectedItemColor,
     this.itemColor,
     this.backgroundColor,
     this.floatButtonBg,
@@ -40,10 +40,10 @@ class BottomBarFloat extends StatelessWidget {
     this.floatButtonIconColorSelected,
   }) {
     bottomBarController = BottomBarFloatController(
-      btnCenter: btnCenter,
-      btnRight: btnRight,
-      btnLeft: btnLeft,
-      selectedItemColor: selectedItemColor,
+      btnCenter: btnCenter!,
+      btnRight: btnRight!,
+      btnLeft: btnLeft!,
+      selectedItemColor: selectedItemColor!,
     );
     futureFunction = bottomBarController.mount();
 
@@ -70,16 +70,16 @@ class BottomBarFloat extends StatelessWidget {
       init: bottomBarController,
       builder: (bottomBarController) {
         //
-        Widget childBtnCenter;
-        if (btnCenter.btnIcon != null) {
+        Widget? childBtnCenter;
+        if (btnCenter!.btnIcon != null) {
           childBtnCenter = Icon(
-            btnCenter.btnIcon,
+            btnCenter!.btnIcon,
             color: bottomBarController.selectedIndex == 1 ? floatButtonIconColorSelected : floatButtonIconColor,
           );
         }
-        if (btnCenter.btnImage != null) {
+        if (btnCenter!.btnImage != null) {
           childBtnCenter = Container(
-            child: bottomBarController.selectedIndex == 1 ? btnCenter.btnImage.btnImageSelected : btnCenter.btnImage.btnImage,
+            child: bottomBarController.selectedIndex == 1 ? btnCenter!.btnImage!.btnImageSelected : btnCenter!.btnImage!.btnImage,
           );
         }
 
@@ -166,11 +166,11 @@ class BottomBarFloat extends StatelessWidget {
                       children: <Widget>[
                         ///[========================= BOTTOM BAR BTN 1 ========================]
 
-                        bottomNavBtn(btnIndex: 0, btnIcon: btnLeft.btnIcon, btnImage: btnLeft.btnImage),
+                        bottomNavBtn(btnIndex: 0, btnIcon: btnLeft!.btnIcon!, btnImage: btnLeft!.btnImage!),
 
                         ///[========================= BOTTOM BAR BTN 2 ========================]
                         ///
-                        bottomNavBtn(btnIndex: 2, btnIcon: btnRight.btnIcon, btnImage: btnRight.btnImage),
+                        bottomNavBtn(btnIndex: 2, btnIcon: btnRight!.btnIcon!, btnImage: btnRight!.btnImage!),
                       ],
                     ),
                   ),
@@ -186,7 +186,7 @@ class BottomBarFloat extends StatelessWidget {
   ///[=================================== WIDGET BOTAO ===================================]
   ///[====================================================================================]
 
-  Widget bottomNavBtn({@required int btnIndex, @required IconData btnIcon, @required BottomBarFloatImgItem btnImage}) {
+  Widget bottomNavBtn({required int btnIndex, required IconData btnIcon, required BottomBarFloatImgItem btnImage}) {
     double marginRight = 0;
     double marginLeft = 0;
 
@@ -257,12 +257,12 @@ class MyBorderShape extends ShapeBorder {
   EdgeInsetsGeometry get dimensions => EdgeInsets.zero;
 
   @override
-  Path getInnerPath(Rect rect, {TextDirection textDirection}) => null;
+  Path getInnerPath(Rect rect, {TextDirection? textDirection}) => null!;
 
   double holeSize = 90;
 
   @override
-  Path getOuterPath(Rect rect, {TextDirection textDirection}) {
+  Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
     print(rect.height);
     return Path.combine(
       PathOperation.difference,
@@ -278,7 +278,7 @@ class MyBorderShape extends ShapeBorder {
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, {TextDirection textDirection}) {}
+  void paint(Canvas canvas, Rect rect, {TextDirection? textDirection}) {}
 
   @override
   ShapeBorder scale(double t) => this;

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 ///[============================== ITEMS ==============================]
 class ISession {
-  String sessionId;
-  String sessionDate;
+  String? sessionId;
+  String? sessionDate;
   ISession({
     this.sessionId,
     this.sessionDate,
@@ -21,7 +21,7 @@ class AppSession {
 
   AppSession._() {}
 
-  ISession atualSession;
+  late ISession atualSession;
 
   //--------------- MANUSEAR SESSAO ----------------
 
@@ -46,13 +46,13 @@ class AppSession {
 
   //------------------- CONTEXT --------------------
 
-  BuildContext _currentContext;
+  BuildContext? _currentContext;
   set currentContext(BuildContext context) {
     _currentContext = context;
   }
 
   BuildContext get currentContext {
     if (_currentContext == null) throw ("ERRO: currentIndex = null / DETALHES: todos os widgets devem passar o seu context para o app session");
-    return _currentContext;
+    return _currentContext!;
   }
 }

@@ -1,7 +1,7 @@
 class PageItem {
-  String nome;
-  IPageItem type;
-  bool dropLine;
+  String? nome;
+  IPageItem? type;
+  bool? dropLine;
 }
 
 abstract class IPageItem {

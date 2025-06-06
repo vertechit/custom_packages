@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../out.imports.dart';
 
 abstract class CustomWidgetRequireds {
-  CustomAppController appController;
+  CustomAppController? appController;
 }
 
 abstract class CustomWidget extends StatelessWidget implements CustomWidgetRequireds {
   //
-  double _w;
+  double? _w;
   get w => _w;
-  double _h;
+  double? _h;
   get h => _h;
 
   @override

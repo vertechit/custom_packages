@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../components.imports.dart';
 
-class TextFieldNoborder extends ICustomTextField {
+class TextFieldNoborder {
 //
 
   @override
@@ -11,7 +11,7 @@ class TextFieldNoborder extends ICustomTextField {
   ///[=================== CONSTRUTOR ===================]
 
   TextFieldNoborder({
-    @required this.preferences,
+    required this.preferences,
   }) {
     setInputDecoration;
   }
@@ -24,13 +24,13 @@ class TextFieldNoborder extends ICustomTextField {
     ///================================================================
     ///
     bool haveFocusBorder = false;
-    if (preferences.borderStyle.focusedBorderColor != null) haveFocusBorder = true;
+    if (preferences.borderStyle!.focusedBorderColor != null) haveFocusBorder = true;
 
     bool haveEnableBorder = false;
-    if (preferences.borderStyle.enableBorderColor != null) haveEnableBorder = true;
+    if (preferences.borderStyle!.enableBorderColor != null) haveEnableBorder = true;
 
     bool haveErrorBorder = false;
-    if (preferences.borderStyle.errorBorderColor != null) haveErrorBorder = true;
+    if (preferences.borderStyle!.errorBorderColor != null) haveErrorBorder = true;
 
     bool haveLeftIcon = false;
     if (preferences.leftIcon != null) haveLeftIcon = true;
@@ -52,11 +52,11 @@ class TextFieldNoborder extends ICustomTextField {
       ///============================ BORDERS ===========================
       ///================================================================
       //
-      enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent), borderRadius: BorderRadius.circular(preferences.borderRadius)),
+      enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent), borderRadius: BorderRadius.circular(preferences.borderRadius!)),
       //
-      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent), borderRadius: BorderRadius.circular(preferences.borderRadius)),
+      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent), borderRadius: BorderRadius.circular(preferences.borderRadius!)),
       //
-      errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent), borderRadius: BorderRadius.circular(preferences.borderRadius)),
+      errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.transparent), borderRadius: BorderRadius.circular(preferences.borderRadius!)),
     );
   }
 }

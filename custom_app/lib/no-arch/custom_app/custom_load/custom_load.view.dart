@@ -13,7 +13,7 @@ class CustomLoad {
   Future show() async {
     print("CUSTOM LOAD - SHOW   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     showDialog(
-      context: Get.context,
+      context: Get.context!,
       barrierDismissible: false,
       builder: (BuildContext context) {
         loadContext.context = context;
@@ -25,7 +25,7 @@ class CustomLoad {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               new CircularProgressIndicator(
-                backgroundColor: CustomLoadConfig.instance.appController.style.colors.primary,
+                backgroundColor: CustomLoadConfig.instance.appController.style.colors!.primary,
                 valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
               ),
             ],
@@ -44,7 +44,7 @@ class CustomLoad {
 
   Future hide() async {
     if (loadContext.context == null) return;
-    await Navigator.pop(loadContext.context);
+    Navigator.pop(loadContext.context!);
     loadContext.context = null;
   }
 }
@@ -52,7 +52,7 @@ class CustomLoad {
 class LoadContext {
   //
   static final LoadContext instance = LoadContext._();
-  BuildContext context;
+  BuildContext? context;
   LoadContext._({
     this.context,
   }) {}

@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 ///
 ///[MODEL:]
 class MenuPreferences {
-  bool activeMenu; ///// [ ** Analisar mudar para 'inserirPaginaNoMenu']
-  String menuTitle;
-  int menuSequence;
+  bool? activeMenu; ///// [ ** Analisar mudar para 'inserirPaginaNoMenu']
+  String? menuTitle;
+  late int menuSequence;
   MenuPreferences({
     this.activeMenu,
     this.menuTitle,
@@ -28,12 +28,12 @@ enum MenuPieceType {
 class MenuPiece {
   ///[=================== VARIAVEIS ===================]
 
-  MenuPieceType menuPieceType;
-  int divId; //// Id de referencia para uma divisao do menu
+  late MenuPieceType menuPieceType;
+  late int divId; //// Id de referencia para uma divisao do menu
   // String divTitle;
-  String buttonTitle; //// Titulo do botao ( label )
-  int menuPos; //// Posicao que o item vai ficar dentro do menu
-  IconData icon;
+  late String buttonTitle; //// Titulo do botao ( label )
+  int? menuPos; //// Posicao que o item vai ficar dentro do menu
+  IconData? icon;
 
   ///[=================== CONSTRUTOR ===================]
 
@@ -41,7 +41,7 @@ class MenuPiece {
   ///
   //Construtor para criar um item clicavel no menu
   MenuPiece.apartButton({
-    @required this.buttonTitle,
+    required this.buttonTitle,
     this.menuPos,
     this.icon,
   }) {
@@ -53,8 +53,8 @@ class MenuPiece {
   ///
   //Construtor para criar um item clicavel que fica dentro de uma divisao do menu
   MenuPiece.divButton({
-    @required this.buttonTitle,
-    @required this.divId,
+    required this.buttonTitle,
+    required this.divId,
     this.icon,
   }) {
     if (buttonTitle == null) throw ("ERRO: O parametro 'buttonTitle' é obrigatório");
@@ -67,7 +67,7 @@ class MenuPiece {
   ///Construtor para criar uma divisao no menu ( DESABILITADO PQ A DIVISAO AGORA Ë CONFIGURADA DE FORMA DIFERENTE)
 
   // MenuPiece.div({
-  //   @required this.divId,
+  //   required this.divId,
   //   this.menuPos,
   //   this.divTitle,
   // }) {

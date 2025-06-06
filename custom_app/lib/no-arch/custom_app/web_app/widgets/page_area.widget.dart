@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../web_app.imports.dart';
-
 class PageArea extends StatelessWidget {
-  Widget child;
+  Widget? child;
   PageArea({
     this.child,
   });
@@ -21,7 +19,7 @@ class PageArea extends StatelessWidget {
         // color: Colors.brown,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey[300].withOpacity(0.4),
+            color: Colors.grey[300]!.withOpacity(0.4),
             spreadRadius: 0.6,
             blurRadius: 4,
             offset: Offset(0, 0), // changes position of shadow

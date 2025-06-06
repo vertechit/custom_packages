@@ -1,7 +1,4 @@
 import 'package:custom_app/lib.imports.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import 'v2.imports.dart';
 
 // abstract class ICustomAuthControllerRequireds {
@@ -10,14 +7,14 @@ import 'v2.imports.dart';
 
 class CustomAuthController {
   //
-  AuthPreferences authPreferences;
+  late AuthPreferences authPreferences;
 
-  UserSessionModel _userSession;
+  late UserSessionModel _userSession;
 
   String publicRoute = "/login";
 
   CustomAuthController({
-    @required this.authPreferences,
+    required this.authPreferences,
   }) {
     _userSession = UserSessionModel(authPreferences: authPreferences);
   }

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import '../login.imports.dart';
 
 class LoginEmailPreferences {
@@ -10,6 +8,6 @@ class LoginEmailPreferences {
   LoginEmailRepository repository;
 
   LoginEmailPreferences({
-    @required this.repository,
+    required this.repository,
   });
 }

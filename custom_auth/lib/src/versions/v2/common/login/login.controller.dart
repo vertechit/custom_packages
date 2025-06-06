@@ -7,22 +7,22 @@ abstract class CustomLoginController {
   ///[=================== VARIAVEIS ===================]
   ///
   // @override
-  FormHandler formHandler;
+  late FormHandler formHandler;
 
-  String loginInputHintText; //// O [hint text] padrao é 'Usuário', mas caso deseje personalizar, é só definir um valor para essa variável
+  String loginInputHintText = "Usuário";
 
   LoginDebug loginDebug = LoginDebug(debugActive: false);
 
-  CustomAppController appController;
+  late CustomAppController appController;
 
-  Function onClickSignup;
+  late Function onClickSignup;
 
   ///[=================== CONSTRUTOR ===================]
   ///
   CustomLoginController() {
     formHandler = FormHandler(
       source: [
-        FormSource(hintText: loginInputHintText ?? "Usuário", id: "user", pos: 0),
+        FormSource(hintText: loginInputHintText, id: "user", pos: 0),
         FormSource(hintText: "Senha", id: "pass", pos: 1, isObscure: true),
       ],
       onInputChange: null,

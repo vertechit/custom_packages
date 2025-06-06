@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 // import 'package:seg_list/seg_list.dart';
 
@@ -7,7 +7,7 @@ import 'mult_col_list.imports.dart';
 class MultColListController extends GetxController {
   //
   // List<MultColListItem> listItems = List<MultColListItem>().obs;
-  var listItems = List<MultColListItem>().obs;
+  var listItems = <MultColListItem>[].obs;
 
   @override
   get getList => listItems;
@@ -25,7 +25,7 @@ class MultColListController extends GetxController {
   ///[=================== CONSTRUTOR ===================]
 
   MultColListController({
-    @required this.sourceList,
+    required this.sourceList,
   }) {
     // super.listUtils.listRef = getList;
     // super.listUtils.listPreferences = listPreferences;
@@ -54,7 +54,7 @@ class MultColListController extends GetxController {
     // }
 
     await sourceList.mountList();
-    tempList = sourceList.outputList;
+    tempList = sourceList.outputList!;
 
     listItems.value = tempList;
 

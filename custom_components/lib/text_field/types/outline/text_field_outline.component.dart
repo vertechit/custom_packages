@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../components.imports.dart';
 
-class TextFieldOutline extends ICustomTextField {
+class TextFieldOutline {
 //
 
   @override
@@ -11,7 +11,7 @@ class TextFieldOutline extends ICustomTextField {
   ///[=================== CONSTRUTOR ===================]
 
   TextFieldOutline({
-    @required this.preferences,
+    required this.preferences,
   }) {
     setInputDecoration;
   }
@@ -24,13 +24,13 @@ class TextFieldOutline extends ICustomTextField {
     ///================================================================
     ///
     bool haveFocusBorder = false;
-    if (preferences.borderStyle.focusedBorderColor != null) haveFocusBorder = true;
+    if (preferences.borderStyle!.focusedBorderColor != null) haveFocusBorder = true;
 
     bool haveEnableBorder = false;
-    if (preferences.borderStyle.enableBorderColor != null) haveEnableBorder = true;
+    if (preferences.borderStyle!.enableBorderColor != null) haveEnableBorder = true;
 
     bool haveErrorBorder = false;
-    if (preferences.borderStyle.errorBorderColor != null) haveErrorBorder = true;
+    if (preferences.borderStyle!.errorBorderColor != null) haveErrorBorder = true;
 
     bool haveLeftIcon = false;
     if (preferences.leftIcon != null) haveLeftIcon = true;
@@ -61,10 +61,10 @@ class TextFieldOutline extends ICustomTextField {
       enabledBorder: haveEnableBorder
           ? OutlineInputBorder(
               borderSide: BorderSide(
-                color: preferences.borderStyle.enableBorderColor,
-                width: preferences.borderStyle.borderStroke,
+                color: preferences.borderStyle!.enableBorderColor!,
+                width: preferences.borderStyle!.borderStroke!,
               ),
-              borderRadius: BorderRadius.circular(preferences.borderRadius),
+              borderRadius: BorderRadius.circular(preferences.borderRadius!),
             )
           : null,
 
@@ -72,10 +72,10 @@ class TextFieldOutline extends ICustomTextField {
       focusedBorder: haveFocusBorder
           ? OutlineInputBorder(
               borderSide: BorderSide(
-                color: preferences.borderStyle.focusedBorderColor,
-                width: preferences.borderStyle.borderStroke,
+                color: preferences.borderStyle!.focusedBorderColor!,
+                width: preferences.borderStyle!.borderStroke!,
               ),
-              borderRadius: BorderRadius.circular(preferences.borderRadius),
+              borderRadius: BorderRadius.circular(preferences.borderRadius!),
             )
           : null,
 
@@ -83,10 +83,10 @@ class TextFieldOutline extends ICustomTextField {
       errorBorder: haveErrorBorder
           ? OutlineInputBorder(
               borderSide: BorderSide(
-                color: preferences.borderStyle.errorBorderColor,
-                width: preferences.borderStyle.borderStroke,
+                color: preferences.borderStyle!.errorBorderColor!,
+                width: preferences.borderStyle!.borderStroke!,
               ),
-              borderRadius: BorderRadius.circular(preferences.borderRadius),
+              borderRadius: BorderRadius.circular(preferences.borderRadius!),
             )
           : null,
     );

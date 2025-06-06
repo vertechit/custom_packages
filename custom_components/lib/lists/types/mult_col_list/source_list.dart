@@ -7,7 +7,7 @@ import 'mult_col_list.imports.dart';
 
 abstract class ISourceList {
   //
-  List<MultColListItem> outputList;
+  List<MultColListItem>? outputList;
 
   Future mountList();
 }
@@ -16,19 +16,19 @@ abstract class ISourceList {
 ///                                                   [-- MODELS --]
 class SetSourceList implements ISourceList {
   //
-  List<Widget> sourceList;
+  List<Widget>? sourceList;
 
   SetSourceList({
     this.sourceList,
   });
 
   @override
-  List<MultColListItem> outputList;
+  List<MultColListItem>? outputList;
 
   @override
   Future mountList() async {
-    for (Widget sourceItem in sourceList) {
-      outputList.add(
+    for (Widget sourceItem in sourceList!) {
+      outputList!.add(
         MultColListItem(
           clicked: false,
           itemChild: sourceItem,
@@ -40,10 +40,10 @@ class SetSourceList implements ISourceList {
 
 class AutomatedSourceList implements ISourceList {
   //
-  String prefixPath;
-  String suffixPath;
-  int qtdItems;
-  Widget Function(Widget) itemFrame;
+  String? prefixPath;
+  String? suffixPath;
+  int? qtdItems;
+  Widget Function(Widget)? itemFrame;
 
   AutomatedSourceList({
     this.prefixPath,
@@ -53,18 +53,18 @@ class AutomatedSourceList implements ISourceList {
   });
 
   @override
-  List<MultColListItem> outputList = [];
+  List<MultColListItem>? outputList;
 
   @override
   Future mountList() async {
     int i = 0;
-    for (i = 0; i <= qtdItems;) {
-      String currentPath = prefixPath + i.toString() + suffixPath;
-      outputList.add(
+    for (i = 0; i <= qtdItems!;) {
+      String currentPath = prefixPath! + i.toString() + suffixPath!;
+      outputList!.add(
         MultColListItem(
           clicked: false,
           // itemChild: Image.asset(currentPath),
-          itemChild: itemFrame(Image.asset(currentPath)),
+          itemChild: itemFrame!(Image.asset(currentPath)),
         ),
       );
       i++;

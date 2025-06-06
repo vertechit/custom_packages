@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CleanBody extends StatelessWidget {
   Widget child;
   CleanBody({
-    this.child,
+    required this.child,
   });
 
   @override

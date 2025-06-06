@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MultColListItem {
-  bool clicked = false;
-  Widget itemChild;
+  bool clicked;
+  Widget? itemChild;
   MultColListItem({
-    this.clicked,
+    this.clicked  = false,
     this.itemChild,
   });
 }

@@ -4,12 +4,12 @@ import 'form.imports.dart';
 
 class FormBuilder extends StatelessWidget {
   FormHandler form;
-  Widget Function({@required TextEditingController textController, @required String hintText, bool isObscure}) inputWidget;
+  Widget Function({required TextEditingController textController, required String hintText, bool isObscure}) inputWidget;
   double spaceBetweenInputs; //// Espaçamento entre cada input. O espaçamento é feito utilizando padding top, e só é aplicado no input de index 1 adiante.
 
   FormBuilder({
-    @required this.form,
-    @required this.inputWidget,
+    required this.form,
+    required this.inputWidget,
     this.spaceBetweenInputs = 0,
   });
 
@@ -38,7 +38,7 @@ class FormBuilder extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    inputWidget(textController: item.controller, hintText: item.hintText, isObscure: item.isObscure),
+                    inputWidget(textController: item.controller!, hintText: item.hintText!, isObscure: item.isObscure!),
                     // Components().textFields.textField_Op1(textController: item.controller, hintText: item.hintText),
                   ],
                 ),

@@ -1,33 +1,20 @@
 import 'package:custom_app/lib.imports.dart';
-import 'package:flutter/material.dart';
-
 import '../../v2.imports.dart';
 
 mixin LoginEmailController on CustomLoginController {
-  LoginEmailPreferences loginEmailPreferences;
+  late LoginEmailPreferences loginEmailPreferences;
 
   ///[====================================== EFETUAR LOGIN ======================================]
 
   Future loginWithEmail() async {
     //
 
-    String user = (await formHandler.input("user")).text;
-    String pass = (await formHandler.input("pass")).text;
+    String user = (await formHandler.input("user"))!.text;
+    String pass = (await formHandler.input("pass"))!.text;
 
-    // return;
-
-    ///[1. run debug]
-    ///
-    if (loginDebug.debugActive == true && loginDebug.mock.active == true) {
-      user = loginDebug.mock.user;
-      pass = loginDebug.mock.pass;
-    } else {
-      ///[2. realiza validacoes] Só realiza validacoes se o debug E o mock não estiverem ativos
-      ///
-      ValidateResult validateResult = await formHandler.validateInputs();
-      if (validateResult == ValidateResult.Refused) {
-        return; //// Retorna se a validacao de formulario nao for aprovada
-      }
+    ValidateResult validateResult = await formHandler.validateInputs();
+    if (validateResult == ValidateResult.Refused) {
+      return; //// Retorna se a validacao de formulario nao for aprovada
     }
 
     CustomLoad().show();
@@ -60,7 +47,7 @@ mixin LoginEmailController on CustomLoginController {
       await processLoginSucess(userData);
     } catch (e) {
       var point = e;
-      await processLoginError(e);
+      await processLoginError(e.toString());
     }
   }
 
@@ -88,27 +75,3 @@ mixin LoginEmailController on CustomLoginController {
     var point;
   }
 }
-
-//______________________________________________________________________________________________________________________________________________________
-
-//
-///[************************]
-///        [ IDEIAS ]
-/// Criar metodo que recebe os metodos que compoe uma rotina padrao de login ( validacao, metodo do client, etc )
-// Future formLoginProcess() async {
-//   //
-// }
-
-/// - Utilizar o termo formLogin/formAuth, para se referir a logins baseados em form (email_auth, local_auth, etc )
-///
-/// - Model LoginAttemptCredentials --> Model que armazena os dados que serao usados na tentativa de login ( Usuario a senha )
-///[************************]
-///
-
-////[POSTERIORMENTE SEPRAR EM OUTROS ARQUIVOS: ]
-
-//model
-
-// enum LoginEmailClients {
-//   FirebaseLoginEmail,
-// }

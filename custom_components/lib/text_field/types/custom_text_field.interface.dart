@@ -1,7 +1,4 @@
-// import 'package:custom_app/custom_app/web_app/web_app.imports.dart';
-import 'package:custom_app/no-arch/no-arch.imports.dart';
 import 'package:flutter/material.dart';
-
 import '../../components.imports.dart';
 
 ///[ MASTER CLASS: ]
@@ -9,7 +6,7 @@ import '../../components.imports.dart';
 abstract class ICustomTextField extends StatelessWidget {
   //
 
-  TextFieldPreferences preferences;
+  TextFieldPreferences? preferences;
 
   ///[=================== VARIAVEIS ===================]
   ///
@@ -32,7 +29,7 @@ abstract class ICustomTextField extends StatelessWidget {
   ///[=================== CONSTRUTOR ===================]
 
   ICustomTextField({
-    @required this.preferences,
+    required this.preferences,
   }) {
     // // if (textFieldController == null) throw ("ERRO: textFieldController não pode ser null");
 
@@ -54,12 +51,12 @@ abstract class ICustomTextField extends StatelessWidget {
     double h = MediaQuery.of(context).size.height / 100;
     double w = MediaQuery.of(context).size.width / 100;
 
-    if (preferences.width == null) preferences.width = w * 100;
+    if (preferences!.width == null) preferences!.width = w * 100;
 
     final ThemeData theme = ThemeData();
 
     return Container(
-      width: preferences.width,
+      width: preferences!.width,
       child: Theme(
         // data: Theme.of(context).copyWith(splashColor: Colors.transparent, primaryColor: WebAppConfig.instance.appController.style.colors.primary, accentColor: Colors.red),
         data: theme.copyWith(
@@ -69,34 +66,19 @@ abstract class ICustomTextField extends StatelessWidget {
           ),
         ), //[FLUTTER > 2.0]
         child: TextFormField(
-          textCapitalization: preferences.textCapitalization ?? preferences.textCapitalization,
-          inputFormatters: preferences.formatters,
-          obscureText: preferences.isObscure,
-          controller: preferences.textFieldController,
-          autofocus: preferences.autoFocus, ////[ <==== AUTO FOCUS ]
-          decoration: preferences.inputDecoration,
+          textCapitalization: preferences!.textCapitalization!,
+          inputFormatters: preferences!.formatters,
+          obscureText: preferences!.isObscure,
+          controller: preferences!.textFieldController,
+          autofocus: preferences!.autoFocus, ////[ <==== AUTO FOCUS ]
+          decoration: preferences!.inputDecoration,
           style: TextStyle(
-            fontSize: preferences.textStyle.textSize,
-            color: preferences.textStyle.textColor,
+            fontSize: preferences!.textStyle!.textSize,
+            color: preferences!.textStyle!.textColor,
           ),
-          validator: (String arg) {
-            // if (arg.length < 1)
-            //   return preferences.txtValidate;
-            // else
-            //   return null;
-
-            // print("***************************  arg: " + arg);
-            // if (preferences.isRequired == true) {
-            //   if (arg.length < 1)
-            //     return preferences.txtValidate;
-            //   else
-            //     return null;
-            // } else {
-            //   return null;
-            // }
-
+          validator: (String? arg) {
             if (preferences?.validation != null) {
-              return preferences.validation.call(arg);
+              return preferences!.validation!.call(arg!);
               // return preferences.validation.validationFailTxt;
             } else {
               return null;
@@ -114,26 +96,26 @@ abstract class ICustomTextField extends StatelessWidget {
     ///================================================================
     ///
     bool haveFocusBorder = false;
-    if (preferences.borderStyle.focusedBorderColor != null) haveFocusBorder = true;
+    if (preferences!.borderStyle!.focusedBorderColor != null) haveFocusBorder = true;
 
     bool haveEnableBorder = false;
-    if (preferences.borderStyle.enableBorderColor != null) haveEnableBorder = true;
+    if (preferences!.borderStyle!.enableBorderColor != null) haveEnableBorder = true;
 
     bool haveErrorBorder = false;
-    if (preferences.borderStyle.errorBorderColor != null) haveErrorBorder = true;
+    if (preferences!.borderStyle!.errorBorderColor != null) haveErrorBorder = true;
 
     bool haveLeftIcon = false;
-    if (preferences.leftIcon != null) haveLeftIcon = true;
+    if (preferences!.leftIcon != null) haveLeftIcon = true;
 
-    preferences.inputDecoration = InputDecoration(
+    preferences!.inputDecoration = InputDecoration(
       border: InputBorder.none,
-      icon: haveLeftIcon ? preferences.leftIcon : null,
+      icon: haveLeftIcon ? preferences!.leftIcon : null,
       //
-      hintText: preferences.hintText.hintText,
-      labelText: preferences.hintText.hintText,
+      hintText: preferences!.hintText.hintText,
+      labelText: preferences!.hintText.hintText,
       hintStyle: TextStyle(
-        fontSize: preferences.hintText.hintTextSize,
-        color: preferences.hintText.hintTextColor,
+        fontSize: preferences!.hintText.hintTextSize,
+        color: preferences!.hintText.hintTextColor,
       ),
 
       ///============================ BORDERS ===========================
@@ -142,10 +124,10 @@ abstract class ICustomTextField extends StatelessWidget {
       enabledBorder: haveEnableBorder
           ? UnderlineInputBorder(
               borderSide: BorderSide(
-                color: preferences.borderStyle.enableBorderColor,
-                width: preferences.borderStyle.borderStroke,
+                color: preferences!.borderStyle!.enableBorderColor!,
+                width: preferences!.borderStyle!.borderStroke!,
               ),
-              borderRadius: BorderRadius.circular(preferences.borderRadius),
+              borderRadius: BorderRadius.circular(preferences!.borderRadius!),
             )
           : null,
 
@@ -153,10 +135,10 @@ abstract class ICustomTextField extends StatelessWidget {
       focusedBorder: haveFocusBorder
           ? UnderlineInputBorder(
               borderSide: BorderSide(
-                color: preferences.borderStyle.focusedBorderColor,
-                width: preferences.borderStyle.borderStroke,
+                color: preferences!.borderStyle!.focusedBorderColor!,
+                width: preferences!.borderStyle!.borderStroke!,
               ),
-              borderRadius: BorderRadius.circular(preferences.borderRadius),
+              borderRadius: BorderRadius.circular(preferences!.borderRadius!),
             )
           : null,
 
@@ -164,10 +146,10 @@ abstract class ICustomTextField extends StatelessWidget {
       errorBorder: haveErrorBorder
           ? UnderlineInputBorder(
               borderSide: BorderSide(
-                color: preferences.borderStyle.errorBorderColor,
-                width: preferences.borderStyle.borderStroke,
+                color: preferences!.borderStyle!.errorBorderColor!,
+                width: preferences!.borderStyle!.borderStroke!,
               ),
-              borderRadius: BorderRadius.circular(preferences.borderRadius),
+              borderRadius: BorderRadius.circular(preferences!.borderRadius!),
             )
           : null,
     );

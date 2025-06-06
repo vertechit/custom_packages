@@ -9,24 +9,20 @@ class CustomTextField extends StatelessWidget {
   ///[=================== VARIAVEIS ===================]
   ///
   String hintText;
-  bool autoFocus = false;
-  Icon icon;
-  CustomBorderStyle borderStyle;
-
-  InputDecoration inputDecoration;
-
-  Icon leftIcon;
-
-  double width;
-
+  bool autoFocus;
+  Icon? icon;
+  CustomBorderStyle? borderStyle;
+  InputDecoration? inputDecoration;
+  Icon? leftIcon;
+  double? width;
   TextEditingController textFieldController;
 
   ///[=================== CONSTRUTOR ===================]
 
   CustomTextField({
-    @required this.textFieldController,
-    @required this.hintText,
-    this.autoFocus,
+    required this.textFieldController,
+    required this.hintText,
+    this.autoFocus = false,
     this.icon,
     this.borderStyle,
     this.leftIcon,
@@ -70,13 +66,13 @@ class CustomTextField extends StatelessWidget {
     ///================================================================
     ///
     bool haveFocusBorder = false;
-    if (borderStyle.focusedBorderColor != null) haveFocusBorder = true;
+    if (borderStyle!.focusedBorderColor != null) haveFocusBorder = true;
 
     bool haveEnableBorder = false;
-    if (borderStyle.enableBorderColor != null) haveEnableBorder = true;
+    if (borderStyle!.enableBorderColor != null) haveEnableBorder = true;
 
     bool haveErrorBorder = false;
-    if (borderStyle.errorBorderColor != null) haveErrorBorder = true;
+    if (borderStyle!.errorBorderColor != null) haveErrorBorder = true;
 
     bool haveLeftIcon = false;
     if (leftIcon != null) haveLeftIcon = true;
@@ -92,7 +88,7 @@ class CustomTextField extends StatelessWidget {
       enabledBorder: haveEnableBorder
           ? OutlineInputBorder(
               borderSide: BorderSide(
-                color: borderStyle.enableBorderColor,
+                color: borderStyle!.enableBorderColor!,
                 width: 1.2,
               ),
               borderRadius: BorderRadius.circular(10.0),
@@ -103,7 +99,7 @@ class CustomTextField extends StatelessWidget {
       focusedBorder: haveFocusBorder
           ? OutlineInputBorder(
               borderSide: BorderSide(
-                color: borderStyle.focusedBorderColor,
+                color: borderStyle!.focusedBorderColor!,
               ),
               borderRadius: BorderRadius.circular(10.0),
             )
@@ -113,7 +109,7 @@ class CustomTextField extends StatelessWidget {
       errorBorder: haveErrorBorder
           ? OutlineInputBorder(
               borderSide: BorderSide(
-                color: borderStyle.errorBorderColor,
+                color: borderStyle!.errorBorderColor!,
               ),
               borderRadius: BorderRadius.circular(10.0),
             )

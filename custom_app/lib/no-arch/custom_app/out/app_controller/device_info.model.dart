@@ -4,7 +4,7 @@ class DeviceInfoModel {
   PlatInfoModel platInfo = PlatInfoModel();
   ScreenInfoModel screenInfo = ScreenInfoModel();
   String _tokenPush = "1";
-  get tokenPush {
+  String get tokenPush {
     if (_tokenPush == "") _tokenPush = "token_de_teste";
     return _tokenPush;
   }
@@ -28,8 +28,8 @@ class DeviceInfoModel {
 }
 
 class PlatInfoModel {
-  String so;
-  String version;
+  String? so;
+  String? version;
   PlatInfoModel({
     this.so,
     this.version,
@@ -37,7 +37,7 @@ class PlatInfoModel {
 }
 
 class ScreenInfoModel {
-  double width;
-  double height;
+  double? width;
+  double? height;
   ScreenInfoModel({this.width, this.height});
 }

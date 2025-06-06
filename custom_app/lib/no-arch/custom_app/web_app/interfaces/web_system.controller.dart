@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../web_app.imports.dart';
-import 'interfaces.imports.dart';
 
 class WebPopup {
   //
 }
 
 abstract class WebSystemControllerRequireds {
-  WebAppController appController;
-  List<WebAppModulo> systemModules;
+  late WebAppController appController;
+  late List<WebAppModulo> systemModules;
   WebSystemControllerRequireds() {
     if (appController == null) throw ("ERRO: A variavel 'appController' não pode ser null");
   }
@@ -39,7 +38,7 @@ abstract class WebSystemController implements WebSystemControllerRequireds {
     }
 
     var point1 = "";
-    systemModules.sort((WebAppModulo a, WebAppModulo b) => a.idModulo.compareTo(appController.debugPreferences.initialPage.idModulo));
+    systemModules.sort((WebAppModulo a, WebAppModulo b) => a.idModulo!.compareTo(appController.debugPreferences!.initialPage!.idModulo!));
     var point2 = "";
   }
 
@@ -73,7 +72,7 @@ abstract class WebSystemController implements WebSystemControllerRequireds {
   Future showModalModule(WebAppModulo modulo) async {
     return await showDialog(
       barrierDismissible: true,
-      context: Get.context,
+      context: Get.context!,
       builder: (BuildContext context) {
         var h = MediaQuery.of(context).size.height / 100;
         var w = MediaQuery.of(context).size.width / 100;

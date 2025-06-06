@@ -10,7 +10,7 @@ import '../web_app.imports.dart';
 class SystemLoader extends StatefulWidget {
   Widget child;
   SystemLoader({
-    @required this.child,
+    required this.child,
   });
   @override
   _SystemLoaderState createState() => _SystemLoaderState();
@@ -86,7 +86,7 @@ class _SystemLoaderState extends State<SystemLoader> {
                               // height: 40,
                               decoration: BoxDecoration(color: Colors.white, boxShadow: [
                                 BoxShadow(
-                                  color: Colors.grey[300].withOpacity(0.4),
+                                  color: Colors.grey[300]!.withOpacity(0.4),
                                   spreadRadius: 0.6,
                                   blurRadius: 4,
                                   offset: Offset(0, 0), // changes position of shadow
@@ -161,8 +161,8 @@ class _SystemLoaderState extends State<SystemLoader> {
 
 //   const WidgetSize({
 //     Key key,
-//     @required this.onChange,
-//     @required this.child,
+//     required this.onChange,
+//     required this.child,
 //   }) : super(key: key);
 
 //   @override

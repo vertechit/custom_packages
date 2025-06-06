@@ -5,8 +5,8 @@ class CleanListBody extends StatelessWidget {
   int listLenght;
 
   CleanListBody({
-    @required this.listBuilder,
-    @required this.listLenght,
+    required this.listBuilder,
+    required this.listLenght,
   });
 
   @override

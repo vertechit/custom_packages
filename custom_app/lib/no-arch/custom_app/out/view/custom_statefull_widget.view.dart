@@ -4,9 +4,9 @@ import 'custom_widget.view.dart';
 
 abstract class CustomStatefullWidget<T extends StatefulWidget> extends State<T> implements CustomWidgetRequireds {
   //
-  double _w;
+  double? _w;
   get w => _w;
-  double _h;
+  double? _h;
   get h => _h;
 
   @override

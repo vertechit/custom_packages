@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class IAppDebug {
   //
-  bool debugActive = false;
-  Widget debugPage;
+  bool debugActive;
+  Widget? debugPage;
 
   init() {}
 
   IAppDebug({
-    this.debugActive,
+    this.debugActive  = false,
     this.debugPage,
   });
 }

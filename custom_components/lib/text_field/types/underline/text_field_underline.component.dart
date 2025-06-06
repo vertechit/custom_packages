@@ -2,35 +2,28 @@ import 'package:flutter/material.dart';
 
 import '../../../components.imports.dart';
 
-///[ MASTER CLASS: ]
+///
 
-class TextFieldUnderline extends ICustomTextField {
+class TextFieldUnderline {
   //
   ///[=================== VARIAVEIS ===================]
   ///
   HintTextModel hintText;
-
-  TextStyleModel textStyle;
-
-  bool autoFocus = false;
-  Icon icon;
-  CustomBorderStyle borderStyle;
-
-  InputDecoration inputDecoration;
-
-  Icon leftIcon;
-
-  double width;
-
+  TextStyleModel? textStyle;
+  bool autoFocus;
+  Icon? icon;
+  CustomBorderStyle? borderStyle;
+  late InputDecoration inputDecoration;
+  Icon? leftIcon;
+  double? width;
   TextEditingController textFieldController;
-
   ///[=================== CONSTRUTOR ===================]
 
   TextFieldUnderline({
-    @required this.textFieldController,
-    @required this.hintText,
+    required this.textFieldController,
+    required this.hintText,
     this.textStyle,
-    this.autoFocus,
+    this.autoFocus = false,
     this.icon,
     this.borderStyle,
     this.leftIcon,
@@ -64,8 +57,8 @@ class TextFieldUnderline extends ICustomTextField {
         autofocus: autoFocus, ////[ <==== AUTO FOCUS ]
         decoration: inputDecoration,
         style: TextStyle(
-          fontSize: textStyle.textSize,
-          color: textStyle.textColor,
+          fontSize: textStyle!.textSize,
+          color: textStyle!.textColor,
         ),
       ),
     );
@@ -78,13 +71,13 @@ class TextFieldUnderline extends ICustomTextField {
     ///================================================================
     ///
     bool haveFocusBorder = false;
-    if (borderStyle.focusedBorderColor != null) haveFocusBorder = true;
+    if (borderStyle!.focusedBorderColor != null) haveFocusBorder = true;
 
     bool haveEnableBorder = false;
-    if (borderStyle.enableBorderColor != null) haveEnableBorder = true;
+    if (borderStyle!.enableBorderColor != null) haveEnableBorder = true;
 
     bool haveErrorBorder = false;
-    if (borderStyle.errorBorderColor != null) haveErrorBorder = true;
+    if (borderStyle!.errorBorderColor != null) haveErrorBorder = true;
 
     bool haveLeftIcon = false;
     if (leftIcon != null) haveLeftIcon = true;
@@ -105,8 +98,8 @@ class TextFieldUnderline extends ICustomTextField {
       enabledBorder: haveEnableBorder
           ? UnderlineInputBorder(
               borderSide: BorderSide(
-                color: borderStyle.enableBorderColor,
-                width: borderStyle.borderStroke,
+                color: borderStyle!.enableBorderColor!,
+                width: borderStyle!.borderStroke!,
               ),
               borderRadius: BorderRadius.circular(10.0),
             )
@@ -116,8 +109,8 @@ class TextFieldUnderline extends ICustomTextField {
       focusedBorder: haveFocusBorder
           ? UnderlineInputBorder(
               borderSide: BorderSide(
-                color: borderStyle.focusedBorderColor,
-                width: borderStyle.borderStroke,
+                color: borderStyle!.focusedBorderColor!,
+                width: borderStyle!.borderStroke!,
               ),
               borderRadius: BorderRadius.circular(10.0),
             )
@@ -127,8 +120,8 @@ class TextFieldUnderline extends ICustomTextField {
       errorBorder: haveErrorBorder
           ? UnderlineInputBorder(
               borderSide: BorderSide(
-                color: borderStyle.errorBorderColor,
-                width: borderStyle.borderStroke,
+                color: borderStyle!.errorBorderColor!,
+                width: borderStyle!.borderStroke!,
               ),
               borderRadius: BorderRadius.circular(10.0),
             )

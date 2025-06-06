@@ -1,7 +1,7 @@
 class LoginMock {
-  bool active;
-  String user;
-  String pass;
+  bool? active;
+  String? user;
+  String? pass;
   LoginMock({
     this.active,
     this.user,

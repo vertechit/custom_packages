@@ -2,32 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import '../custom_app.imports.dart';
-import 'custom_popup.imports.dart';
-
-//Model usado quando não foi passado um PopupStyle customizado
-// class PopupDefaultStyle {
-//   //
-// }
-
-// class NoButton {}
-
-// class OkButton {}
-
-// class ReplyButtons {}
-
-// class CustomButtom {
-//   String textButton1;
-//   String textButton2;
-//   CustomButtom({
-//     this.textButton1,
-//     this.textButton2,
-//   });
-// }
-
-//========================================================================================= MASTER CLASS =========================================================================================
-//=================================================================================================================================================================================================
 
 class CustomPopup {
   //commit
@@ -41,42 +16,42 @@ class CustomPopup {
 
   PopupType type;
 
-  BuildContext _dialogContext;
+  late BuildContext _dialogContext;
 
-  bool closeDialogOnPressButton = true; //// Indica se deve fechar o popup ao clicar em um dos botões
-  Widget customWidget;
+  bool closeDialogOnPressButton; //// Indica se deve fechar o popup ao clicar em um dos botões
+  Widget? customWidget;
 
-  PopupDecoration decoration;
+  late PopupDecoration decoration;
 
   //---- TEXTOS -----
 
-  String txtTitle;
-  String txtText;
+  String? txtTitle;
+  String? txtText;
 
   //---- FUNCTIONS ON CLICK ----
-  String txtBtnOk;
-  Function onClickOk;
-  Function onClickCancel;
+  String? txtBtnOk;
+  Function? onClickOk;
+  Function? onClickCancel;
 
   var h;
   var w;
 
   //----- ICONE -----
 
-  bool hasIcon = true;
-  IconData icon;
+  bool hasIcon;
+  IconData? icon;
 
-  BuildContext context;
+  late BuildContext context;
 
   ///[=================== CONSTRUTOR ===================]
   CustomPopup({
-    @required this.type,
+    required this.type,
     this.onClickOk,
     this.onClickCancel,
-    this.closeDialogOnPressButton,
+    this.closeDialogOnPressButton = true,
     this.txtText,
     this.txtTitle,
-    this.hasIcon,
+    this.hasIcon = true,
     this.icon,
     this.txtBtnOk,
     this.customWidget,
@@ -85,7 +60,10 @@ class CustomPopup {
     if (CustomPopupConfig.instance.decoration != null) {
       decoration = CustomPopupConfig.instance.decoration;
     } else {
-      decoration = PopupDecoration(backgroundColor: Colors.white, titleColor: Colors.grey[600], textColor: Colors.grey[600]);
+      decoration = PopupDecoration(backgroundColor: Colors.white
+      , titleColor: Colors.grey[600]!
+      , textColor: Colors.grey[600]!
+      );
     }
     if (closeDialogOnPressButton == null) closeDialogOnPressButton = true;
     if (hasIcon == null) hasIcon = false;
@@ -196,9 +174,9 @@ class CustomPopup {
                                   ? Padding(
                                       padding: EdgeInsets.only(top: 25),
                                       child: Text(
-                                        txtTitle,
+                                        txtTitle!,
                                         textAlign: TextAlign.center,
-                                        style: TextStyle(color: Colors.grey[600], fontWeight: FontWeight.w600, fontSize: 25, fontFamily: CustomPopupConfig.instance.style.fonts.op1),
+                                        style: TextStyle(color: Colors.grey[600], fontWeight: FontWeight.w600, fontSize: 25, fontFamily: CustomPopupConfig.instance.style.fonts!.op1),
                                       ),
                                     )
                                   : Container(),
@@ -213,16 +191,16 @@ class CustomPopup {
                                       padding: EdgeInsets.only(top: 8),
                                       child: Text(
                                         // "Ja existe um contato de emergencia utilizando esse número celular",
-                                        txtText,
+                                        txtText!,
                                         textAlign: TextAlign.center,
-                                        style: TextStyle(color: Colors.grey[600], fontSize: 20, fontFamily: CustomPopupConfig.instance.style.fonts.op1),
+                                        style: TextStyle(color: Colors.grey[600], fontSize: 20, fontFamily: CustomPopupConfig.instance.style.fonts!.op1),
                                       ),
                                     )
                                   : Container(),
 
                               ///----- CUSTOM WIDGET -----
                               ///
-                              customWidget != null ? customWidget : Container(),
+                              customWidget != null ? customWidget! : Container(),
 
                               ///-------- BUTTONS --------
                               Padding(
@@ -273,9 +251,9 @@ class CustomPopup {
         mainAxisAlignment: mainAlign,
         children: [
           /// BOTAO OK
-          showOk ? popupButton(text: txtBtnOk, bgColor: CustomPopupConfig.instance.style.colors.primary, textColor: Colors.white, onClick: onClickOk) : Container(),
+          showOk ? popupButton(text: txtBtnOk!, bgColor: CustomPopupConfig.instance.style.colors!.primary!, textColor: Colors.white, onClick: onClickOk!) : Container(),
 
-          showCancel ? popupButton(text: "Cancelar", bgColor: Colors.grey[200], textColor: Colors.grey[700], onClick: onClickCancel) : Container(),
+          showCancel ? popupButton(text: "Cancelar", bgColor: Colors.grey[200]!, textColor: Colors.grey[700]!, onClick: onClickCancel!) : Container(),
         ],
       ),
     );
@@ -283,7 +261,7 @@ class CustomPopup {
 
   ///[------------------------------------ WIDGET ------------------------------------]
   ///
-  Widget popupButton({String text, Color bgColor, Color textColor, Function onClick}) {
+  Widget popupButton({required String text, required Color bgColor, required Color textColor, required Function onClick}) {
     double btnWidth = 0;
     double marginBottom = 0;
 
@@ -300,13 +278,15 @@ class CustomPopup {
       height: 52,
       margin: EdgeInsets.only(bottom: marginBottom),
       width: btnWidth,
-      child: RaisedButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: bgColor,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+        ),
         child: Text(
           text,
           style: TextStyle(color: textColor, fontSize: 20.5),
         ),
-        color: bgColor,
         onPressed: () {
           if (closeDialogOnPressButton == true) Navigator.pop(_dialogContext);
           if (onClick != null) return onClick();

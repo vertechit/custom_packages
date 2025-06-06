@@ -1,5 +1,5 @@
 class RepositoryResult {
-  ResultStatus resultStatus;
+  late ResultStatus resultStatus;
   var resultData;
 }
 

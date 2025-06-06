@@ -6,16 +6,16 @@ import 'package:get/get.dart';
 ///[=============================================================================================================================]
 class BottomBarFloatItem {
   var id;
-  String btnText;
-  IconData btnIcon;
-  BottomBarFloatImgItem btnImage;
+  String? btnText;
+  IconData? btnIcon;
+  BottomBarFloatImgItem? btnImage;
   Widget pageWidget;
   BottomBarFloatItem({
-    @required this.id,
+    required this.id,
     this.btnIcon,
     this.btnImage,
     this.btnText,
-    @required this.pageWidget,
+    required this.pageWidget,
   }) {
     if (btnImage != null && btnIcon != null) throw ("Não pode ser passado um btnIcon junto com btnImage");
   }
@@ -25,8 +25,8 @@ class BottomBarFloatImgItem {
   Image btnImage;
   Image btnImageSelected;
   BottomBarFloatImgItem({
-    @required this.btnImage,
-    @required this.btnImageSelected,
+    required this.btnImage,
+    required this.btnImageSelected,
   });
 }
 
@@ -38,18 +38,18 @@ class BottomBarFloatController extends GetxController {
   ///[====================== VARIAVEIS ======================]
   int selectedIndex = 1;
 
-  List<Widget> childrenList = List();
+  List<Widget> childrenList = <Widget>[];
 
   Color selectedItemColor;
 
-  BottomBarFloatItem btnCenter;
-  BottomBarFloatItem btnLeft;
-  BottomBarFloatItem btnRight;
+  BottomBarFloatItem? btnCenter;
+  BottomBarFloatItem? btnLeft;
+  BottomBarFloatItem? btnRight;
 
   ///[====================== CONSTRUTOR ======================]
 
   BottomBarFloatController({
-    @required this.selectedItemColor,
+    required this.selectedItemColor,
     this.btnCenter,
     this.btnRight,
     this.btnLeft,
@@ -70,9 +70,9 @@ class BottomBarFloatController extends GetxController {
   ///[-------------------------------- MOUNT -------------------------------]
   ///
   Future mount() async {
-    childrenList.add(btnLeft.pageWidget);
-    childrenList.add(btnCenter.pageWidget);
-    childrenList.add(btnRight.pageWidget);
+    childrenList.add(btnLeft!.pageWidget);
+    childrenList.add(btnCenter!.pageWidget);
+    childrenList.add(btnRight!.pageWidget);
     return "ok";
   }
 }

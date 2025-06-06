@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../buttons.imports.dart';
 
-class ButtonRounded extends ICustomButtom {
+class ButtonRounded {
   //
   @override
   ButtonsPreferences preferences;
 
   ButtonRounded({
-    @required this.preferences,
+    required this.preferences,
   }) {
     if (preferences.borderRadius == null) preferences.borderRadius = 30;
     if (preferences.width == null) preferences.width = 200;
@@ -23,22 +23,25 @@ class ButtonRounded extends ICustomButtom {
     return Container(
       width: preferences.width,
       height: preferences.height,
-      child: RaisedButton(
-        // elevation: 0,
-        child: Text(
-          preferences.text,
-          style: TextStyle(
-            color: preferences.textPreferences.textColor,
-            fontSize: preferences.textPreferences.size,
-            fontFamily: preferences.textPreferences.fontFamily,
-            fontWeight: preferences.textPreferences.fontWeight,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: preferences.bgColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(preferences.borderRadius!),
           ),
         ),
-        onPressed: preferences.onClick,
-        color: preferences.bgColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(preferences.borderRadius),
+        child: Text(
+          preferences.text!,
+          style: TextStyle(
+            color: preferences.textPreferences!.textColor,
+            fontSize: preferences.textPreferences!.size,
+            fontFamily: preferences.textPreferences!.fontFamily,
+            fontWeight: preferences.textPreferences!.fontWeight,
+          ),
         ),
+        onPressed: () {
+          preferences.onClick!();
+        },
       ),
     );
   }

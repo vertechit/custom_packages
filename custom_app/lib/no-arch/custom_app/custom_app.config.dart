@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'out/out.imports.dart';
 
 class CustomAppConfig {
@@ -7,7 +5,7 @@ class CustomAppConfig {
 
   bool configured = false;
 
-  CustomAppController appController;
+  late CustomAppController appController;
 
   ///[=================== CONSTRUTOR ===================]
 
@@ -16,7 +14,7 @@ class CustomAppConfig {
   CustomAppConfig._() {}
 
   Future initialize({
-    @required CustomAppController appController,
+    required CustomAppController appController,
   }) async {
     configured = true;
     if (appController != null) this.appController = appController;

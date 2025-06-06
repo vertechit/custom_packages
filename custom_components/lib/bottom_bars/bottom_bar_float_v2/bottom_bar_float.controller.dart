@@ -6,14 +6,14 @@ import 'package:get/get.dart';
 ///[=============================================================================================================================]
 class BottomBarFloatItem {
   var id;
-  String btnText;
+  String? btnText;
   IconData btnIcon;
   Widget pageWidget;
   BottomBarFloatItem({
-    @required this.id,
-    @required this.btnIcon,
+    required this.id,
+    required this.btnIcon,
     this.btnText,
-    @required this.pageWidget,
+    required this.pageWidget,
   });
 }
 
@@ -25,18 +25,18 @@ class BottomBarFloatController extends GetxController {
   ///[====================== VARIAVEIS ======================]
   int selectedIndex = 1;
 
-  List<Widget> childrenList = List();
+  List<Widget> childrenList = <Widget>[];
 
   Color selectedItemColor;
 
-  BottomBarFloatItem btnCenter;
-  BottomBarFloatItem btnLeft;
-  BottomBarFloatItem btnRight;
+  BottomBarFloatItem? btnCenter;
+  BottomBarFloatItem? btnLeft;
+  BottomBarFloatItem? btnRight;
 
   ///[====================== CONSTRUTOR ======================]
 
   BottomBarFloatController({
-    @required this.selectedItemColor,
+    required this.selectedItemColor,
     this.btnCenter,
     this.btnRight,
     this.btnLeft,
@@ -57,9 +57,9 @@ class BottomBarFloatController extends GetxController {
   ///[-------------------------------- MOUNT -------------------------------]
   ///
   Future mount() async {
-    childrenList.add(btnLeft.pageWidget);
-    childrenList.add(btnCenter.pageWidget);
-    childrenList.add(btnRight.pageWidget);
+    childrenList.add(btnLeft!.pageWidget);
+    childrenList.add(btnCenter!.pageWidget);
+    childrenList.add(btnRight!.pageWidget);
     return "ok";
   }
 }

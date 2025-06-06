@@ -4,11 +4,11 @@ import '../custom_app.imports.dart';
 import 'interfaces/interfaces.imports.dart';
 
 class WebAppConfig {
-  WebAppController appController;
+  late WebAppController appController;
 
-  IAppComponents components;
+  late IAppComponents components;
 
-  IStyleTheme style;
+  late IStyleTheme style;
 
   bool configured = false; //// Indica se o package ja foi configurado
 
@@ -22,11 +22,11 @@ class WebAppConfig {
   ///[=============================================================================================================]
 
   Future initialize({
-    @required WebAppController appController,
+    required WebAppController appController,
   }) async {
     configured = true;
     if (appController != null) this.appController = appController;
-    this.components = appController.components;
-    this.style = appController.style;
+    this.components = appController.components!;
+    this.style = appController.style!;
   }
 }

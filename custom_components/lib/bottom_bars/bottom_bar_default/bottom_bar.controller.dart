@@ -9,10 +9,10 @@ class BottomBarItem {
   IconData btnIcon;
   Widget pageWidget;
   BottomBarItem({
-    @required this.id,
-    @required this.btnIcon,
-    @required this.btnText,
-    @required this.pageWidget,
+    required this.id,
+    required this.btnIcon,
+    required this.btnText,
+    required this.pageWidget,
   });
 }
 
@@ -25,17 +25,17 @@ class BottomBarController extends GetxController {
   int selectedIndex = 0;
 
   List<BottomBarItem> itensList;
-  List<Widget> childrenList = List();
+  List<Widget> childrenList = <Widget>[];
 
   Color selectedItemColor;
 
-  BottomNavigationBar bottomNavigationWidget;
+  late BottomNavigationBar bottomNavigationWidget;
 
   ///[====================== CONSTRUTOR ======================]
 
   BottomBarController({
-    @required this.itensList,
-    @required this.selectedItemColor,
+    required this.itensList,
+    required this.selectedItemColor,
   }) {
     mount();
   }
@@ -80,7 +80,7 @@ class BottomBarController extends GetxController {
   ///[---------------------- BUILD BOTTOM BAR BUTTONS ----------------------]
 
   Future<List<BottomNavigationBarItem>> buildBottomBarButtons() async {
-    List<BottomNavigationBarItem> listaRetorno = List();
+    List<BottomNavigationBarItem> listaRetorno = <BottomNavigationBarItem>[];
     for (BottomBarItem itemBottomBar in itensList) {
       listaRetorno.add(
         BottomNavigationBarItem(

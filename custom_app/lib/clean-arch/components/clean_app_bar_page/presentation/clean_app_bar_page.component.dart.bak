@@ -1,0 +1,83 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:custom_app/lib.imports.dart';
+import 'package:custom_components/app_bars/app_bars.imports.dart';
+
+class CleanAppBarPage extends StatelessWidget {
+  final Widget? body;
+  final CleanAppBarData cleanAppBarData;
+  final bool centerList;
+  final Future Function()? onClickFloatButton;
+  final Future Function()? onClickRightButton;
+  final bool showFloatButton;
+
+  const CleanAppBarPage({
+    Key? key,
+    required this.cleanAppBarData,
+    this.body,
+    this.centerList = false,
+    this.onClickFloatButton,
+    this.onClickRightButton,
+    this.showFloatButton = false,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    final h = MediaQuery.of(context).size.height / 100;
+    final w = MediaQuery.of(context).size.width / 100;
+    
+    final bodyWidget = body ?? SliverList(
+      delegate: SliverChildBuilderDelegate(
+        (context, index) {
+          return const Column(
+            children: [],
+          );
+        },
+        childCount: 1,
+      ),
+    );
+
+    return Scaffold(
+      // backgroundColor: CustomAppConfig.instance.appController.style.colors.bg1,
+      backgroundColor: Colors.white,      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: const SystemUiOverlayStyle(
+          statusBarIconBrightness: Brightness.dark,
+        ),
+        child: CustomScrollView(
+          // physics: NeverScrollableScrollPhysics(),
+          slivers: <Widget>[
+            ///[============================== APP BAR ===============================]
+            ///            CleanAppBar(
+              cleanAppBarData: cleanAppBarData,
+              onClickRightButton: onClickRightButton != null 
+                ? () async => await onClickRightButton!() 
+                : null,
+            ),
+
+            ///[================================ BODY ================================]
+
+            bodyWidget,
+          ],
+        ),
+      ),
+
+      ///[================================ FLOAT BUTTON ================================]
+
+      floatingActionButton: showFloatButton
+          ? Container(
+              margin: EdgeInsets.only(bottom: h * 10),
+              child: FloatingActionButton(
+                heroTag: "btn1",                backgroundColor: const Color(0xFF01579B),
+                onPressed: onClickFloatButton != null ? () async => await onClickFloatButton!() : null,
+                // onPressed: () {
+                //   moduleController.startRegistrarPonto();
+                // },
+                child: const Icon(
+                  Icons.alarm_add,
+                  color: Colors.white,
+                ),
+              ),
+            )
+          : null,
+    );
+  }
+}

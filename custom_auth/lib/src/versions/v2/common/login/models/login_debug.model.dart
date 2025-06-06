@@ -2,9 +2,9 @@ import 'login_models.imports.dart';
 
 class LoginDebug {
   bool debugActive;
-  LoginMock mock;
+  LoginMock? mock;
   LoginDebug({
-    this.debugActive,
+    this.debugActive = false,
     this.mock,
   });
 }

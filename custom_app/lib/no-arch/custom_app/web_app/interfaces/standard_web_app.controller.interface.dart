@@ -4,10 +4,10 @@ import '../../custom_app.imports.dart';
 import '../web_app.imports.dart';
 
 abstract class IWebAppControllerRequireds {
-  AppConfig appConfig; ///// [ <<*** POR ENQUANTO NÃO UTILIZADO ]
-  IAppComponents components;
-  IStyleTheme style;
-  IAppDebug debug;
+  AppConfig? appConfig;
+  IAppComponents? components;
+  IStyleTheme? style;
+  IAppDebug? debug;
 }
 
 abstract class WebAppController implements IWebAppControllerRequireds {
@@ -15,18 +15,18 @@ abstract class WebAppController implements IWebAppControllerRequireds {
 
   DeviceInfoModel deviceInfo = DeviceInfoModel();
 
-  double pagesHeight;
+  double? pagesHeight;
 
-  IDebugPreferences debugPreferences;
+  IDebugPreferences? debugPreferences;
 
   @override
   Future<String> initializeApp() async {
     return "/load_system";
   }
 
-  Future navigateTo({int idModulo}) async {
+  Future navigateTo({int? idModulo}) async {
     ///Futuramente podem ser usados outras referencia de navegacao, além do id
     print("disparado metodo navigaTo() !!!");
-    streamNavigate.add(idModulo);
+    streamNavigate.add(idModulo!);
   }
 }

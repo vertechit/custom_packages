@@ -5,8 +5,8 @@ class PopupDecoration {
   Color titleColor;
   Color textColor;
   PopupDecoration({
-    this.backgroundColor,
-    this.titleColor,
-    this.textColor,
+    required this.backgroundColor,
+    required this.titleColor,
+    required this.textColor,
   });
 }

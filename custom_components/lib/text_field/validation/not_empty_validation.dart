@@ -2,15 +2,15 @@ import 'validation.imports.dart';
 
 class NotEmptyValidation implements ITextFieldValidation {
   @override
-  Function(String validationFailTxt) onValidationFail;
+  Function(String validationFailTxt)? onValidationFail;
 
   ///Texto exibido quando a validação for reprovada. ( Exemplo "Esse campo não pode ser vazio")
   ///Esse texto é recebido via metodo construtor no momento de utilização da validação
   @override
-  String validationFailTxt;
+  String? validationFailTxt;
 
   @override
-  String defaultValidationFailTxt = "Esse campo deve ser preenchido";
+  String? defaultValidationFailTxt = "Esse campo deve ser preenchido";
 
   NotEmptyValidation({
     this.onValidationFail,
@@ -25,11 +25,11 @@ class NotEmptyValidation implements ITextFieldValidation {
 
     if (fieldTxt.isNotEmpty) {
       print("AAAAAAAA");
-      return null;
+      return "";
     } else {
       print("BBBBBBBB");
-      onValidationFail(validationFailTxt);
-      return validationFailTxt;
+      onValidationFail!(validationFailTxt!);
+      return validationFailTxt!;
     }
   }
 }

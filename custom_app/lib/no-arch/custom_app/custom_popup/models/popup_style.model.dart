@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class PopupStyle {
   double borderRadius;
-  Widget buttonOk;
-  Widget buttonCancel;
-  TextStyle styleText;
-  TextStyle styleTitle;
+  Widget? buttonOk;
+  Widget? buttonCancel;
+  TextStyle? styleText;
+  TextStyle? styleTitle;
   PopupStyle({
-    this.borderRadius,
+    required this.borderRadius,
     this.buttonOk,
     this.buttonCancel,
     this.styleText,

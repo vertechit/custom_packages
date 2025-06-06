@@ -8,16 +8,16 @@ class BottomBarDefault extends StatelessWidget {
   ///
 
   List<BottomBarItem> itensList;
-  BottomBarController bottomBarController;
+  late BottomBarController bottomBarController;
   Color selectedItemColor;
 
-  Future futureFunction;
+  late Future futureFunction;
 
   ///[=================== CONSTRUTOR ===================]
 
   BottomBarDefault({
-    @required this.itensList,
-    @required this.selectedItemColor,
+    required this.itensList,
+    required this.selectedItemColor,
   }) {
     bottomBarController = BottomBarController(
       itensList: itensList,

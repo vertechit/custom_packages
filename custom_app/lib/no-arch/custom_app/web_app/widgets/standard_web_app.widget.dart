@@ -5,9 +5,9 @@ import '../web_app.imports.dart';
 
 ///==================================================== WebAppWidget ====================================================
 abstract class WebAppWidgetRequireds {
-  String displayName;
+  String? displayName;
 
-  WebAppModulo modulo;
+  WebAppModulo? modulo;
 
   Widget buildView(BuildContext context);
 }
@@ -16,9 +16,9 @@ abstract class WebAppWidget extends StatelessWidget implements WebAppWidgetRequi
   @override
   Widget build(BuildContext context) {
     return WebAppPage(
-      displayName: displayName,
+      displayName: displayName!,
       children: buildView(context),
-      modulo: modulo,
+      modulo: modulo!,
     );
   }
 }
@@ -30,9 +30,9 @@ class WebAppPage extends StatefulWidget {
   String displayName;
   WebAppModulo modulo;
   WebAppPage({
-    @required this.displayName,
-    @required this.children,
-    @required this.modulo,
+    required this.displayName,
+    required this.children,
+    required this.modulo,
   });
   @override
   _WebAppPageState createState() => _WebAppPageState();
@@ -41,15 +41,14 @@ class WebAppPage extends StatefulWidget {
 class _WebAppPageState extends State<WebAppPage> {
   double cabecHeight = 0;
 
-  double h;
-  double w;
+  late double h;
+  late double w;
 
-  Widget pageHeaderWidget;
+  late Widget pageHeaderWidget;
 
-  Future futureMethod;
+  late Future futureMethod;
 
   _WebAppPageState() {
-    var point;
   }
 
   Future<double> setPageAreaHeight() async {
@@ -59,17 +58,17 @@ class _WebAppPageState extends State<WebAppPage> {
 
     print("APP BAR SIZE " + appBarHeight.toString());
 
-    double realHeight = (WebAppConfig.instance.appController.deviceInfo.screenInfo.height * 100) - appBarHeight;
+    double realHeight = (WebAppConfig.instance.appController.deviceInfo.screenInfo.height! * 100) - appBarHeight;
 
     print("************ 22222222222 SIZE: " + cabecHeight.toString());
 
-    double areaHeight;
+    double? areaHeight;
 
     PageType pageType = widget.modulo.view.type;
 
     if (pageType == PageType.basic) areaHeight = (realHeight - cabecHeight) - 22;
     if (pageType == PageType.modal) {
-      areaHeight = widget.modulo.view.height - cabecHeight;
+      areaHeight = widget.modulo.view.height! - cabecHeight;
 
       var widgetTest = WidgetSize(
         onChange: (Size size) async {
@@ -84,7 +83,7 @@ class _WebAppPageState extends State<WebAppPage> {
       var point = "";
     }
 
-    return areaHeight;
+    return areaHeight!;
   }
 
   @override
@@ -153,6 +152,19 @@ class _WebAppPageState extends State<WebAppPage> {
         ),
       );
     }
+
+    // Return a default widget when the page type is neither modal nor basic
+    return Container(
+      width: w * 100,
+      height: h * 100,
+      color: Colors.white,
+      child: Center(
+        child: Text(
+          'Unsupported page type: ${pageType.toString()}',
+          style: TextStyle(color: Colors.grey[700]),
+        ),
+      ),
+    );
   }
 
   Widget basicPageHeader() {
@@ -186,7 +198,7 @@ class _WebAppPageState extends State<WebAppPage> {
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey[300].withOpacity(0.4),
+                    color: Colors.grey[300]!.withOpacity(0.4),
                     spreadRadius: 0.6,
                     blurRadius: 4,
                     offset: Offset(0, 0), // changes position of shadow
@@ -233,7 +245,7 @@ class _WebAppPageState extends State<WebAppPage> {
               style: TextStyle(
                 color: Colors.grey[700],
                 fontSize: 22,
-                fontFamily: WebAppConfig.instance.appController.style.fonts.op2,
+                fontFamily: WebAppConfig.instance.appController.style!.fonts!.op2,
               ),
             ),
           ),
@@ -256,9 +268,9 @@ class WidgetSize extends StatefulWidget {
   final Function onChange;
 
   const WidgetSize({
-    Key key,
-    @required this.onChange,
-    @required this.child,
+    Key? key,
+    required this.onChange,
+    required this.child,
   }) : super(key: key);
 
   @override

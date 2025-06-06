@@ -9,7 +9,7 @@ class FormHandler {
   List<FormInput> formInputs = [];
   List<FormSource> source = [];
 
-  Function onInputChange;
+  Function? onInputChange;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -18,8 +18,8 @@ class FormHandler {
   ///[=================== CONSTRUTOR ===================]
 
   FormHandler({
-    @required this.source,
-    @required this.onInputChange,
+    required this.source,
+    this.onInputChange,
   }) {
     for (FormSource itemSource in source) {
       formInputs.add(
@@ -41,41 +41,35 @@ class FormHandler {
 
   Future listenInputsChanges() async {
     for (FormInput itemInput in formInputs) {
-      itemInput.controller.addListener(onInputChange);
+      itemInput.controller!.addListener(() => onInputChange);
     }
   }
 
   ///[---------------------- GERAR LISTA DE INPUTS ----------------------]
 
-  Future generateFormInputs() async {
-    // for (FormSource itemSource in source) {
-    //   formInputs.add(
-    //     FormInput(
-    //       controller: TextEditingController(),
-    //       id: itemSource.id,
-    //       hintText: itemSource.hintText,
-    //       isObscure: itemSource.isObscure,
-    //     ),
-    //   );
-    // }
+  Future<void> generateFormInputs() async {
+    // Method body commented out as it's already handled in the constructor
   }
 
   ///[------------------------ RECUPERAR UM INPUT -----------------------]
 
-  Future<TextEditingController> input(String id) async {
+  Future<TextEditingController?> input(String id) async {
     for (FormInput itemInput in formInputs) {
       if (itemInput.id == id) {
         return itemInput.controller;
       }
     }
+    return null; // Return null if no matching input is found
   }
 
   ///[----------------------- ESCREVER EM UM INPUT -----------------------]
 
-  Future inputWrite({String text, String inputId}) async {
+  Future<void> inputWrite({String? text, String? inputId}) async {
+    if (inputId == null) return;
+
     for (FormInput itemInput in formInputs) {
       if (itemInput.id == inputId) {
-        itemInput.controller.text = text;
+        itemInput.controller?.text = text ?? '';
       }
     }
   }
@@ -83,9 +77,9 @@ class FormHandler {
   ///[------------------------- VALIDAR FORMULARIO -------------------------]
 
   Future<ValidateResult> validateInputs() async {
-    if (formKey.currentState.validate()) {
+    if (formKey.currentState?.validate() ?? false) {
       //If all data are correct then save data to out variables
-      formKey.currentState.save();
+      formKey.currentState?.save();
       return ValidateResult.Approved;
     } else {
       //If all data are not valid then start auto validation.
@@ -100,27 +94,26 @@ class FormHandler {
 ///
 class FormSource {
   String id; ///// Identificacao
-  int pos; //// Posicao na lista (decidir se será usado)
+  int? pos; //// Posicao na lista (decidir se será usado)
   String hintText;
   bool isObscure;
+
   FormSource({
-    this.id,
+    required this.id,
     this.pos,
-    this.hintText,
-    this.isObscure,
-  }) {
-    if (isObscure == null) isObscure = false;
-  }
+    required this.hintText,
+    bool? isObscure,
+  }) : isObscure = isObscure ?? false;
 }
 
 //===================================================================================================================================
 ///[Objeto usado para armazenas os inputs criados ]
 ///
 class FormInput {
-  TextEditingController controller;
-  String id;
-  String hintText;
-  bool isObscure;
+  TextEditingController? controller;
+  String? id;
+  String? hintText;
+  bool? isObscure;
   FormInput({
     this.controller,
     this.id,

@@ -1,7 +1,5 @@
 import 'dart:convert' show json;
 
-import 'package:flutter/material.dart';
-
 import '../../../src.imports.dart';
 import '../v2.imports.dart';
 
@@ -16,13 +14,13 @@ class UserSessionModel {
   var _userModel = UserModel();
   get user => _userModel;
   bool _isAuthenticate = false;
-  UserSessionPersistence sessionPersistence;
+  late UserSessionPersistence sessionPersistence;
   AuthPreferences authPreferences;
 
   ///[=================== CONSTRUTOR ===================]
 
   UserSessionModel({
-    @required this.authPreferences,
+    required this.authPreferences,
   }) {
     sessionPersistence = UserSessionPersistence(authPreferences: authPreferences);
   }
@@ -77,7 +75,7 @@ class RecoverItem {
   bool status;
   var userData;
   RecoverItem({
-    this.status,
+    required this.status,
     this.userData,
   });
 }
@@ -89,12 +87,12 @@ class UserSessionPersistence {
   AuthPreferences authPreferences;
 
   UserSessionPersistence({
-    @required this.authPreferences,
+    required this.authPreferences,
   });
 
   ///[===== PERSISTIR DADOS =====]
 
-  Future savePersistence({@required bool status, @required var userData}) async {
+  Future savePersistence({required bool status, required var userData}) async {
     await _saveSessionStatus(status);
     await _saveUserData(userData);
   }

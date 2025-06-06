@@ -18,8 +18,8 @@ mixin FormController {
     ///A lista de mensagens de falha é zerada. A cada checagem essa lista é montada novamente
     validationsFailsList.clear();
 
-    if (formKey.currentState.validate()) {
-      formKey.currentState.save();
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
       return "1";
     } else {
       autoValidate.value = true;

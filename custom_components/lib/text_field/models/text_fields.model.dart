@@ -11,65 +11,47 @@ class TextFieldPreferences {
   //
   //[=================== VARIAVEIS ===================]
   ///
+  late InputDecoration inputDecoration;
   HintTextModel hintText;
-
-  TextStyleModel textStyle;
-
-  Color backgroundColor;
-
-  bool autoFocus = false;
-
-  Icon icon;
-
-  CustomBorderStyle borderStyle;
-
-  InputDecoration inputDecoration;
-
-  Icon leftIcon;
-
-  double width;
-
+  TextStyleModel? textStyle;
+  Color? backgroundColor;
+  bool autoFocus;
+  Icon? icon;
+  CustomBorderStyle? borderStyle;
+  Icon? leftIcon;
+  double? width;
   TextEditingController textFieldController;
-
-  bool isObscure = false;
-
-  double borderRadius;
-
-  String txtValidate;
-
-  List<TextInputFormatter> formatters;
-
-  TextCapitalization textCapitalization;
-
-  EdgeInsetsGeometry contentPadding;
-
+  bool isObscure;
+  double? borderRadius;
+  String? txtValidate;
+  List<TextInputFormatter>? formatters;
+  TextCapitalization? textCapitalization;
+  EdgeInsetsGeometry? contentPadding;
   bool hasContentPadding = true;
-
   /// Indica se o textField é obrigatorio. Se for true, sera aplicada a validacao ( utilizado no antigo processo de validação, disponivel até a versão 0.0.2 )
-  bool isRequired = false;
-
+  bool isRequired;
   /// Classe responsavel por fazer a validacao do formulario (algumas opcoes disponiveis: NotEmptyValidation(), CPFvalidation() )
-  ITextFieldValidation validation;
+  ITextFieldValidation? validation;
 
   // ///[=================== CONSTRUTOR ===================]
 
   TextFieldPreferences({
-    @required this.textFieldController,
-    @required this.hintText,
+    required this.textFieldController,
+    required this.hintText,
     this.textStyle,
-    this.autoFocus,
+    this.autoFocus = false,
     this.icon,
     this.borderStyle,
     this.leftIcon,
     this.width,
-    this.isObscure,
+    this.isObscure = false,
     this.backgroundColor,
     this.borderRadius,
     this.txtValidate,
     this.formatters,
     this.textCapitalization,
     this.contentPadding,
-    this.isRequired,
+    this.isRequired = false,
     this.validation,
   }) {
     if (textFieldController == null) throw ("ERRO: textFieldController não pode ser null");
@@ -101,13 +83,10 @@ class TextFieldPreferences {
 ///[=========================================================]
 ///
 class CustomBorderStyle {
-  Color focusedBorderColor;
-
-  Color enableBorderColor;
-
-  Color errorBorderColor;
-
-  double borderStroke;
+  Color? focusedBorderColor;
+  Color? enableBorderColor;
+  Color? errorBorderColor;
+  double? borderStroke;
 
   CustomBorderStyle({
     this.focusedBorderColor,
@@ -127,10 +106,10 @@ class CustomBorderStyle {
 ///
 class HintTextModel {
   //
-  String hintText;
-  Color hintTextColor;
-  double hintTextStroke;
-  double hintTextSize;
+  String? hintText;
+  Color? hintTextColor;
+  double? hintTextStroke;
+  double? hintTextSize;
 
   HintTextModel({
     this.hintText,
@@ -149,8 +128,8 @@ class HintTextModel {
 ///
 class TextStyleModel {
   //
-  Color textColor;
-  double textSize;
+  Color? textColor;
+  double? textSize;
 
   TextStyleModel({
     this.textColor,

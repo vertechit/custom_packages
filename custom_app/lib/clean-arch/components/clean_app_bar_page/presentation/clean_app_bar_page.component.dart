@@ -1,48 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:custom_app/lib.imports.dart';
 import 'package:custom_components/app_bars/app_bars.imports.dart';
+import 'dart:async';
 
 class CleanAppBarPage extends StatelessWidget {
-  Widget body;
+  final Widget? body;
+  final CleanAppBarData cleanAppBarData;
+  final bool centerList;
+  final Future<dynamic> Function() onClickFloatButton;
+  final Future<dynamic> Function() onClickRightButton;
+  final bool showFloatButton;
 
-  CleanAppBarData cleanAppBarData;
-  bool centerList = false;
-
-  Future Function() onClickFloatButton;
-  Future Function() onClickRightButton;
-
-  bool showFloatButton = false;
-
-  CleanAppBarPage({
-    this.cleanAppBarData,
+  const CleanAppBarPage({
+    required this.cleanAppBarData,
     this.body,
-    this.centerList,
-    this.onClickFloatButton,
-    this.onClickRightButton,
+    this.centerList = false,
+    required this.onClickFloatButton,
+    required this.onClickRightButton,
     this.showFloatButton = false,
+    super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    var h = MediaQuery.of(context).size.height / 100;
-    var w = MediaQuery.of(context).size.width / 100;
+    final double h = MediaQuery.of(context).size.height / 100;
 
-    if (body == null) {
-      body = SliverList(
-        delegate: SliverChildBuilderDelegate(
-          (context, index) {
-            return Column(
-              children: [],
-            );
-          },
-          childCount: 1,
-        ),
-      );
-    }
+    final Widget resolvedBody = body ??
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              return Column(children: []);
+            },
+            childCount: 1,
+          ),
+        );
 
     return Scaffold(
-      // backgroundColor: CustomAppConfig.instance.appController.style.colors.bg1,
       backgroundColor: Colors.white,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: const SystemUiOverlayStyle(
@@ -50,36 +43,23 @@ class CleanAppBarPage extends StatelessWidget {
         ),
         sized: false,
         child: CustomScrollView(
-          // physics: NeverScrollableScrollPhysics(),
           slivers: <Widget>[
-            ///[============================== APP BAR ===============================]
-            ///
-
             CleanAppBar(
               cleanAppBarData: cleanAppBarData,
               onClickRightButton: onClickRightButton,
             ),
-
-            ///[================================ BODY ================================]
-
-            body,
+            resolvedBody,
           ],
         ),
       ),
-
-      ///[================================ FLOAT BUTTON ================================]
-
-      floatingActionButton: showFloatButton
+      floatingActionButton: showFloatButton && onClickFloatButton != null
           ? Container(
               margin: EdgeInsets.only(bottom: h * 10),
               child: FloatingActionButton(
                 heroTag: "btn1",
-                backgroundColor: Color(0xFF01579B),
+                backgroundColor: const Color(0xFF01579B),
                 onPressed: onClickFloatButton,
-                // onPressed: () {
-                //   moduleController.startRegistrarPonto();
-                // },
-                child: Icon(
+                child: const Icon(
                   Icons.alarm_add,
                   color: Colors.white,
                 ),

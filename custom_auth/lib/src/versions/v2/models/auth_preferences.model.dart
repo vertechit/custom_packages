@@ -8,12 +8,11 @@ class AuthPreferences {
   AuthClient authClient;
 
   AuthPreferences({
-    this.privateRoute,
-    this.publicRoute,
-    this.afterDisconnectRoute,
-    this.userModel,
-    this.authClient,
+    required this.privateRoute,
+    required this.publicRoute,
+    required this.afterDisconnectRoute,
+    required this.userModel,
+    required this.authClient,
   }) {
-    if (userModel == null) this.userModel = UserModel();
   }
 }

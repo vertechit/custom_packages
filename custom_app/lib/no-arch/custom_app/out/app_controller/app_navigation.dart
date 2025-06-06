@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class IAppNavigation {
-  Future toWidgetReplacement(Widget widgetDestination, {bool customEffect = false});
+  Future<void> toWidgetReplacement(Widget widgetDestination, {bool customEffect = false});
 }
 
 class AppNavigation implements IAppNavigation {
-  BuildContext _currentContext;
-  List<BuildContext> _contextStack = [];
+  late BuildContext _currentContext;
+  final List<BuildContext> _contextStack = [];
   static final AppNavigation instance = AppNavigation._();
   String teste = "";
 
-  AppNavigation._() {}
+  AppNavigation._();
 
   set currentContext(BuildContext context) {
     _contextStack.add(context);
@@ -19,7 +19,7 @@ class AppNavigation implements IAppNavigation {
   }
 
   BuildContext get currentContext {
-    if (_currentContext == null) throw ("ERRO: currentIndex = null / DETALHES: todos os widgets devem passar o seu context para o app session");
+    if (_contextStack.isEmpty) throw ("ERRO: currentIndex = null / DETALHES: todos os widgets devem passar o seu context para o app session");
     return _currentContext;
   }
 
@@ -30,11 +30,11 @@ class AppNavigation implements IAppNavigation {
   ///[====================================== BACK ======================================]
   // Descricao: Volta uma pagina, removendo o ultime item da pilha
 
-  Future back({int stackAmount}) async {
-    if (stackAmount == null) stackAmount = 1;
+  Future<void> back({int? stackAmount}) async {
+    int amountToRemove = stackAmount ?? 1;
 
     int i = 1;
-    while (i <= stackAmount) {
+    while (i <= amountToRemove && _contextStack.isNotEmpty) {
       print("back 1 !!!!!");
       Navigator.pop(_contextStack.last);
       _contextStack.removeLast();
@@ -60,7 +60,7 @@ class AppNavigation implements IAppNavigation {
     // var lastContext = _contextStack.last;
     // _contextStack.removeLast();
     var lastContext = Get.context;
-    Navigator.of(lastContext).pushReplacementNamed(routeUrl);
+    Navigator.of(lastContext!).pushReplacementNamed(routeUrl);
   }
 
   ///[======================================= POP =======================================]
@@ -68,14 +68,14 @@ class AppNavigation implements IAppNavigation {
     // var lastContext = _contextStack.last;
     // _contextStack.removeLast();
     var lastContext = Get.context;
-    Navigator.of(lastContext).pop();
+    Navigator.of(lastContext!).pop();
   }
 
   ///[==================================== TO WIDGET ====================================]
 
   Future toWidget(Widget widgetDestination) async {
     Navigator.push(
-      Get.context,
+      Get.context!,
       MaterialPageRoute(builder: (context) {
         return widgetDestination;
       }),
@@ -101,14 +101,14 @@ class AppNavigation implements IAppNavigation {
 
     if (customEffect == false) {
       Navigator.pushReplacement(
-        Get.context,
+        Get.context!,
         MaterialPageRoute(builder: (context) {
           return widgetDestination;
         }),
       );
     } else {
       Navigator.pushReplacement(
-        Get.context,
+        Get.context!,
         PageRouteBuilder(
           pageBuilder: (c, a1, a2) => widgetDestination,
           transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),

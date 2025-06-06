@@ -1,6 +1,6 @@
 class AppConfig {
   // Function methodInitializeApp; **deprecate
-  Function setInitialRoute;
+  Function? setInitialRoute;
   AppConfig({
     // this.methodInitializeApp,
     this.setInitialRoute,

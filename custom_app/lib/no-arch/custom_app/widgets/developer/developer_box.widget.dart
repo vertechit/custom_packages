@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../custom_app.imports.dart';
 
 class DeveloperBox extends StatelessWidget {
-  Widget child;
+  Widget? child;
   DeveloperBox({
     this.child,
   });
@@ -19,7 +19,7 @@ class DeveloperBox extends StatelessWidget {
       child: Stack(
         children: [
           //-------- CHILD --------
-          child,
+          child!,
 
           //------ BOTAO DEBUG ------
           Positioned(
@@ -30,7 +30,7 @@ class DeveloperBox extends StatelessWidget {
                 var context = Get.context;
                 showModalBottomSheet(
                   isScrollControlled: true,
-                  context: context,
+                  context: context!,
                   backgroundColor: Colors.transparent,
                   builder: (ctx) {
                     return Wrap(
@@ -46,7 +46,7 @@ class DeveloperBox extends StatelessWidget {
                           ),
                           child: Column(
                             children: [
-                              CustomAppConfig.instance.appController.debug.debugPage,
+                              CustomAppConfig.instance.appController.debug.debugPage!,
                             ],
                           ),
                         ),

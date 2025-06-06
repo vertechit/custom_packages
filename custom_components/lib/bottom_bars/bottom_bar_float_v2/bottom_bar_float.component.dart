@@ -23,7 +23,7 @@
 //   ///[=================== CONSTRUTOR ===================]
 
 //   BottomBarFloat({
-//     @required this.selectedItemColor,
+//     required this.selectedItemColor,
 //     this.btnCenter,
 //     this.btnRight,
 //     this.btnLeft,
@@ -137,7 +137,7 @@
 //   ///[=================================== WIDGET BOTAO ===================================]
 //   ///[====================================================================================]
 
-//   Widget bottomNavBtn3({@required int btnIndex, @required IconData btnIcon}) {
+//   Widget bottomNavBtn3({required int btnIndex, required IconData btnIcon}) {
 //     return GetBuilder<BottomBarFloatController>(
 //       builder: (bottomBarController) {
 //         return GestureDetector(
@@ -162,7 +162,7 @@
 //     );
 //   }
 
-//   Widget bottomNavBtn2({@required int btnIndex, @required IconData btnIcon}) {
+//   Widget bottomNavBtn2({required int btnIndex, required IconData btnIcon}) {
 //     double marginRight = 0;
 //     double marginLeft = 0;
 
@@ -204,7 +204,7 @@
 //     );
 //   }
 
-//   Widget bottomNavBtn({@required int btnIndex, @required IconData btnIcon}) {
+//   Widget bottomNavBtn({required int btnIndex, required IconData btnIcon}) {
 //     double marginRight = 0;
 //     double marginLeft = 0;
 

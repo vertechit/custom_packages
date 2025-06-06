@@ -9,7 +9,7 @@ abstract class ModalBottomWidget {
   Future showModal() async {
     showModalBottomSheet(
       isScrollControlled: true,
-      context: Get.context,
+      context: Get.context!,
       backgroundColor: Colors.transparent,
       builder: (ctx) {
         return Wrap(

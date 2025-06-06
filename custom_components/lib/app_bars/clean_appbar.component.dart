@@ -2,8 +2,8 @@ import 'package:custom_app/no-arch/no-arch.imports.dart';
 import 'package:flutter/material.dart';
 
 class CleanAppBarData {
-  String title;
-  CleanAppBarLayout layout;
+  String? title;
+  CleanAppBarLayout? layout;
   CleanAppBarData({
     this.title,
     this.layout,
@@ -14,14 +14,14 @@ class CleanAppBarData {
 
 /* [--------------------------------------------------  */
 class CleanAppBarLayout {
-  bool activeRightButtonCollapsed = false;
-  Widget rightButtonColapsed;
-  bool activeBackButton = false;
+  bool? activeRightButtonCollapsed;
+  Widget? rightButtonColapsed;
+  bool activeBackButton;
 
   CleanAppBarLayout({
-    this.activeRightButtonCollapsed,
+    this.activeRightButtonCollapsed = false,
     this.rightButtonColapsed,
-    this.activeBackButton,
+    this.activeBackButton = false,
   }) {
     if (activeRightButtonCollapsed == null) activeRightButtonCollapsed = false;
     if (activeBackButton == null) activeBackButton = false;
@@ -44,13 +44,13 @@ class CleanAppBar extends StatelessWidget {
   Future Function() onClickRightButton;
 
   ///[Botão exibido quando o appbar estiver minimizado, localizado na esquerda]
-  Widget rightButtonSmall;
+  late Widget rightButtonSmall;
 
   CleanAppBar({
-    this.cleanAppBarData,
-    this.onClickRightButton,
+    required this.cleanAppBarData,
+    required this.onClickRightButton,
   }) {
-    if (cleanAppBarData.title != null) title = cleanAppBarData.title;
+    if (cleanAppBarData.title != null) title = cleanAppBarData.title!;
   }
 
   @override
@@ -60,7 +60,6 @@ class CleanAppBar extends StatelessWidget {
 
     return SliverAppBar(
       automaticallyImplyLeading: false,
-      brightness: Brightness.light,
       expandedHeight: h * 16.5,
       // expandedHeight: 100,
       // floating: true,
@@ -78,7 +77,7 @@ class CleanAppBar extends StatelessWidget {
         child: Container(
           child: Text(
             title,
-            style: TextStyle(color: Colors.black, fontFamily: CustomAppConfig.instance.appController.style.fonts.op3, fontWeight: FontWeight.w800),
+            style: TextStyle(color: Colors.black, fontFamily: CustomAppConfig.instance.appController.style.fonts!.op3, fontWeight: FontWeight.w800),
           ),
         ),
       ),
@@ -86,7 +85,7 @@ class CleanAppBar extends StatelessWidget {
       //---------------------------------- BOTOES ----------------------------------
 
       actions: [
-        cleanAppBarData.layout.activeRightButtonCollapsed
+        cleanAppBarData.layout!.activeRightButtonCollapsed!
             ? SABT(
                 child: Center(
                   child: GestureDetector(
@@ -123,7 +122,7 @@ class CleanAppBar extends StatelessWidget {
             children: [
               //------------------------------- BACK BUTTON -------------------------------
 
-              cleanAppBarData.layout.activeBackButton
+              cleanAppBarData.layout!.activeBackButton
                   ? Padding(
                       padding: EdgeInsets.only(bottom: 8, left: 4),
                       child: Icon(
@@ -152,7 +151,7 @@ class CleanAppBar extends StatelessWidget {
                             color: Colors.black.withOpacity(0.8),
                             fontWeight: FontWeight.w900,
                             fontSize: w * 7.8,
-                            fontFamily: CustomAppConfig.instance.appController.style.fonts.op1,
+                            fontFamily: CustomAppConfig.instance.appController.style.fonts!.op1,
                           ),
                         ),
                         //------------------------------ Sub Titulo ------------------------------
@@ -163,7 +162,7 @@ class CleanAppBar extends StatelessWidget {
                             color: Colors.grey[400],
                             fontWeight: FontWeight.w500,
                             fontSize: w * 4.7,
-                            fontFamily: CustomAppConfig.instance.appController.style.fonts.op1,
+                            fontFamily: CustomAppConfig.instance.appController.style.fonts!.op1,
                           ),
                         ),
                       ],
@@ -185,11 +184,11 @@ class CleanAppBar extends StatelessWidget {
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(5.2)),
                         border: Border.all(
-                          color: Colors.grey[200],
+                          color: Colors.grey[200]!,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey[200].withOpacity(0.8),
+                            color: Colors.grey[200]!,
                             spreadRadius: 1,
                             blurRadius: 3,
                             offset: Offset(1.4, 1.4), // changes position of shadow
@@ -217,8 +216,8 @@ class CleanAppBar extends StatelessWidget {
 class SABT extends StatefulWidget {
   final Widget child;
   const SABT({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
   }) : super(key: key);
   @override
   _SABTState createState() {
@@ -227,8 +226,8 @@ class SABT extends StatefulWidget {
 }
 
 class _SABTState extends State<SABT> {
-  ScrollPosition _position;
-  bool _visible;
+  ScrollPosition? _position;
+  bool? _visible;
   @override
   void dispose() {
     _removeListener();
@@ -253,7 +252,7 @@ class _SABTState extends State<SABT> {
   }
 
   void _positionListener() {
-    final FlexibleSpaceBarSettings settings = context.dependOnInheritedWidgetOfExactType();
+    final FlexibleSpaceBarSettings settings = context.dependOnInheritedWidgetOfExactType()!;
     bool visible = settings == null || settings.currentExtent <= settings.minExtent;
     if (_visible != visible) {
       setState(() {
@@ -265,7 +264,7 @@ class _SABTState extends State<SABT> {
   @override
   Widget build(BuildContext context) {
     return Visibility(
-      visible: _visible,
+      visible: _visible!,
       child: widget.child,
     );
   }

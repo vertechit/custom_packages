@@ -8,8 +8,8 @@ class HttpRequestResult {
   ResultStatus status; ///// Indica se a requisicao foi bem sucedida
   var result;
   HttpRequestResult({
-    @required this.status,
-    @required this.result,
+    required this.status,
+    required this.result,
   });
 }
 

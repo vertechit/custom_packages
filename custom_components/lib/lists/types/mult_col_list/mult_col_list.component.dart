@@ -5,11 +5,11 @@ import 'mult_col_list.imports.dart';
 
 class MultColList extends StatelessWidget {
   //
-  MultColListController controller;
+  late MultColListController controller;
 
-  MultColListPreferences preferences;
+  MultColListPreferences? preferences;
 
-  Function onClickItem;
+  Function? onClickItem;
 
   List imagesPathList = [
     "assets/images/avatar/user/user1.jpg",
@@ -19,7 +19,7 @@ class MultColList extends StatelessWidget {
   // ISourceList sourceList;
 
   MultColList({
-    @required ISourceList sourceList,
+    required ISourceList sourceList,
     this.preferences,
     this.onClickItem,
   }) {
@@ -28,8 +28,8 @@ class MultColList extends StatelessWidget {
     controller.initComponent();
   }
 
-  double w;
-  double h;
+  late double w;
+  late double h;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class MultColList extends StatelessWidget {
           width: w * 100,
           height: h * 100,
           // color: Style().colors.primary,//
-          color: preferences.backgroundPageColor,
+          color: preferences!.backgroundPageColor,
           child: GetX<MultColListController>(
             builder: (controller) {
               List<MultColListItem> listItems = controller.listItems;
@@ -86,14 +86,14 @@ class MultColList extends StatelessWidget {
   }
 
   Widget imageBox(int index, MultColListItem item) {
-    BoxDecoration decoration;
-    if (item.clicked == true) decoration = preferences.clickedDecoration;
-    if (item.clicked == false) decoration = preferences.defaultDecoration;
+    BoxDecoration? decoration;
+    if (item.clicked == true) decoration = preferences!.clickedDecoration;
+    if (item.clicked == false) decoration = preferences!.defaultDecoration;
 
     return GestureDetector(
       onTap: () {
         controller.onClickItem(index);
-        onClickItem(index);
+        onClickItem!(index);
       },
       child: Stack(
         children: [
@@ -103,8 +103,8 @@ class MultColList extends StatelessWidget {
             height: w * 32,
             child: item.itemChild,
             decoration: BoxDecoration(
-              borderRadius: decoration.borderRadius,
-              color: decoration.color,
+              borderRadius: decoration!.borderRadius,
+              color: decoration!.color,
             ),
           ),
           //-- DECORATION --
@@ -112,8 +112,8 @@ class MultColList extends StatelessWidget {
             width: w * 32,
             height: w * 32,
             decoration: BoxDecoration(
-              borderRadius: decoration.borderRadius,
-              border: decoration.border,
+              borderRadius: decoration!.borderRadius,
+              border: decoration!.border,
             ),
           ),
         ],

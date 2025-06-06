@@ -1,17 +1,12 @@
 // import 'package:get_version/get_version.dart';
 import 'package:custom_auth/src/versions/v2/v2.imports.dart';
 import '../../custom_app.imports.dart';
-import '../out.imports.dart';
-import 'app_config.model.dart';
-import 'app_services.model.dart';
-import 'device_info.model.dart';
 
 abstract class ICustomAppControllerRequireds {
-  AuthPreferences authPreferences;
-  // AppConfig appConfig; ///// [ <<*** POR ENQUANTO NÃO UTILIZADO ]
-  IAppComponents components;
-  IStyleTheme style;
-  IAppDebug debug;
+  late AuthPreferences authPreferences;
+  late IAppComponents components;
+  late IStyleTheme style;
+  late IAppDebug debug;
 }
 
 abstract class CustomAppController implements ICustomAppControllerRequireds {
@@ -20,17 +15,15 @@ abstract class CustomAppController implements ICustomAppControllerRequireds {
   ///[=================== VARIAVEIS ===================]
   ///
   //------
-  AuthPreferences authPreferences;
-  // AppConfig appConfig; ///// [ <<*** POR ENQUANTO NÃO UTILIZADO ]
-  //------
+  late AuthPreferences authPreferences;
 
   DeviceInfoModel deviceInfo = DeviceInfoModel();
 
   AppSession appSession = AppSession.instance;
 
-  CustomAuthController auth;
+  late CustomAuthController auth;
 
-  IAppServices appServices;
+  late IAppServices appServices;
 
   IAppNavigation navigation = AppNavigation.instance;
 
@@ -73,7 +66,7 @@ abstract class CustomAppController implements ICustomAppControllerRequireds {
 
     // String initialRoute = await appConfig.setInitialRoute(); //// Disparar metodo de incializacao
 
-    // return initialRoute;
+    return "";
   }
 
   //Verificar status de autenticacao

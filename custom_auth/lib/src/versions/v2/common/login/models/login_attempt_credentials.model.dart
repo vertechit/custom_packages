@@ -2,7 +2,7 @@ class LoginAttemptCredentials {
   String user;
   String pass;
   LoginAttemptCredentials({
-    this.user,
-    this.pass,
+    required this.user,
+    required this.pass,
   });
 }
