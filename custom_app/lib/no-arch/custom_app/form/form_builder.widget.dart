@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'form.imports.dart';
 
 class FormBuilder extends StatelessWidget {
-  FormHandler form;
-  Widget Function({required TextEditingController textController, required String hintText, bool isObscure}) inputWidget;
-  double spaceBetweenInputs; //// Espaçamento entre cada input. O espaçamento é feito utilizando padding top, e só é aplicado no input de index 1 adiante.
+  final FormHandler form;
+  final Widget Function({required TextEditingController textController, required String hintText, bool isObscure}) inputWidget;
+  final double spaceBetweenInputs; //// Espaçamento entre cada input. O espaçamento é feito utilizando padding top, e só é aplicado no input de index 1 adiante.
 
-  FormBuilder({
+  const FormBuilder({
     required this.form,
     required this.inputWidget,
     this.spaceBetweenInputs = 0,

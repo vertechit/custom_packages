@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import '../../custom_app.imports.dart';
 
 class DeveloperBox extends StatelessWidget {
-  Widget? child;
-  DeveloperBox({
+  final Widget? child;
+  const DeveloperBox({
     this.child,
   });
 

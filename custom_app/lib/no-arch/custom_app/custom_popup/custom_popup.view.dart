@@ -57,16 +57,12 @@ class CustomPopup {
     this.customWidget,
   }) {
     // context = CustomPopupConfig.instance.appController.navigation.currentContext;
-    if (CustomPopupConfig.instance.decoration != null) {
-      decoration = CustomPopupConfig.instance.decoration;
-    } else {
-      decoration = PopupDecoration(backgroundColor: Colors.white
-      , titleColor: Colors.grey[600]!
-      , textColor: Colors.grey[600]!
-      );
-    }
-    if (closeDialogOnPressButton == null) closeDialogOnPressButton = true;
-    if (hasIcon == null) hasIcon = false;
+    decoration = CustomPopupConfig.instance.decoration ??
+        PopupDecoration(
+          backgroundColor: Colors.white,
+          titleColor: Colors.grey[600]!,
+          textColor: Colors.grey[600]!,
+        );
     if (icon == null) icon = FontAwesomeIcons.exclamationCircle;
   }
 
@@ -289,7 +285,7 @@ class CustomPopup {
         ),
         onPressed: () {
           if (closeDialogOnPressButton == true) Navigator.pop(_dialogContext);
-          if (onClick != null) return onClick();
+          return onClick();
         },
       ),
     );

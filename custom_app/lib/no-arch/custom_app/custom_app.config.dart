@@ -17,6 +17,6 @@ class CustomAppConfig {
     required CustomAppController appController,
   }) async {
     configured = true;
-    if (appController != null) this.appController = appController;
+        this.appController = appController;
   }
 }

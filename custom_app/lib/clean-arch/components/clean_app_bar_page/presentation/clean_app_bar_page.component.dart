@@ -52,7 +52,7 @@ class CleanAppBarPage extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: showFloatButton && onClickFloatButton != null
+      floatingActionButton: showFloatButton
           ? Container(
               margin: EdgeInsets.only(bottom: h * 10),
               child: FloatingActionButton(

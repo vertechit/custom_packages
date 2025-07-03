@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CleanListBody extends StatelessWidget {
-  Widget Function(BuildContext context, int index) listBuilder;
-  int listLenght;
+  final Widget Function(BuildContext context, int index) listBuilder;
+  final int listLenght;
 
-  CleanListBody({
+  const CleanListBody({
     required this.listBuilder,
     required this.listLenght,
   });

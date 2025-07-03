@@ -24,7 +24,7 @@ class CustomLoadConfig {
     required CustomAppController appController,
   }) async {
     configured = true;
-    if (appController != null) this.appController = appController;
+        this.appController = appController;
     this.components = appController.components;
     this.style = appController.style;
   }

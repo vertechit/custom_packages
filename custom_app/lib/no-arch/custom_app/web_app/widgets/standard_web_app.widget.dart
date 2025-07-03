@@ -26,10 +26,10 @@ abstract class WebAppWidget extends StatelessWidget implements WebAppWidgetRequi
 ///==================================================== WebAppPage ====================================================
 
 class WebAppPage extends StatefulWidget {
-  Widget children;
-  String displayName;
-  WebAppModulo modulo;
-  WebAppPage({
+  final Widget children;
+  final String displayName;
+  final WebAppModulo modulo;
+  const WebAppPage({
     required this.displayName,
     required this.children,
     required this.modulo,

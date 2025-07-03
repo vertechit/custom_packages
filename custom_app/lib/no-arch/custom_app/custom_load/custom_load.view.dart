@@ -53,7 +53,5 @@ class LoadContext {
   //
   static final LoadContext instance = LoadContext._();
   BuildContext? context;
-  LoadContext._({
-    this.context,
-  }) {}
+  LoadContext._() {}
 }

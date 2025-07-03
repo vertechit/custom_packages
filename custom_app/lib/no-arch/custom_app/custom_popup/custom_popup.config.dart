@@ -12,7 +12,7 @@ class CustomPopupConfig {
 
   bool configured = false; //// Indica se o package ja foi configurado
 
-  late PopupDecoration decoration;
+  PopupDecoration? decoration;
 
   ///[=================== CONSTRUTOR ===================]
 
@@ -30,7 +30,7 @@ class CustomPopupConfig {
     // required IStyleTheme style,
   }) async {
     configured = true;
-    if (appController != null) this.appController = appController;
+        this.appController = appController;
     if (decoration != null) this.decoration = decoration;
     this.components = appController.components;
     this.style = appController.style;

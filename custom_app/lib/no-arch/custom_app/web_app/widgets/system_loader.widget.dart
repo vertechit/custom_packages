@@ -8,8 +8,8 @@ import '../web_app.imports.dart';
 ///[ Descricao: Widget responsavel por carregar o sistema, realizando todas as medições de dimensões e salvando essas informações localmente ]
 
 class SystemLoader extends StatefulWidget {
-  Widget child;
-  SystemLoader({
+  final Widget child;
+  const SystemLoader({
     required this.child,
   });
   @override

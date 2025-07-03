@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CleanBody extends StatelessWidget {
-  Widget child;
-  CleanBody({
+  final Widget child;
+  const CleanBody({
     required this.child,
   });
 

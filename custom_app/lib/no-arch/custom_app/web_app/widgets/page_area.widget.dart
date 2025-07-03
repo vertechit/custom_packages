@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class PageArea extends StatelessWidget {
-  Widget? child;
-  PageArea({
+  final Widget? child;
+  const PageArea({
     this.child,
   });
 

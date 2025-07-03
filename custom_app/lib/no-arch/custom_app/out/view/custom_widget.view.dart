@@ -6,7 +6,7 @@ abstract class CustomWidgetRequireds {
   CustomAppController? appController;
 }
 
-abstract class CustomWidget extends StatelessWidget implements CustomWidgetRequireds {
+abstract class CustomWidget implements CustomWidgetRequireds {
   //
   double? _w;
   get w => _w;
